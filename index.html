@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -103,7 +103,6 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -133,38 +132,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4</span></a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
-        </a>
-      </li>
   </ul>
 </nav>
 
 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="Searching..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
 
 </div>
     </header>
@@ -212,7 +184,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-11-15 11:08:51 / Modified: 13:36:59" itemprop="dateCreated datePublished" datetime="2021-11-15T11:08:51+08:00">2021-11-15</time>
+              <time title="Created: 2021-11-15 11:08:51 / Modified: 13:56:50" itemprop="dateCreated datePublished" datetime="2021-11-15T11:08:51+08:00">2021-11-15</time>
             </span>
 
           
@@ -244,33 +216,33 @@
 <p>The particle swarm algorithm simulates the birds in a flock of birds by designing a massless particle. The particle has only two attributes: speed and position. Speed represents the speed of movement, and position represents the direction of movement. Each particle searches for the optimal solution individually in the search space, and records it as the current individual extreme value, and shares the individual extreme value with other particles in the entire particle swarm, and finds the optimal individual extreme value as the entire particle The current global optimal solution of the swarm, all particles in the particle swarm adjust their speed and position according to the current individual extreme value they find and the current global optimal solution shared by the entire particle swarm. </p>
 <h2 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h2><p><strong>I made two versions of improvements to the traditional PSO</strong></p>
 <h4 id="1-Improvement-purpose"><a href="#1-Improvement-purpose" class="headerlink" title="1. Improvement purpose"></a>1. Improvement purpose</h4><p><em><strong>1) PSO0 —&gt; PSO1</strong></em></p>
-<p><img src="../images/PSO/001.png" alt="img"></p>
+<p><img src="/images/PSO/001.png" alt="img"></p>
 <p>In PSO0, w is a constant, in PSO1, w satisfies the upper formula</p>
 <p>The larger w is, the faster the particle moves, and the larger the span of each movement. Therefore, an appropriate increase in w will shorten the optimization time. But a large w will also bring about problems, that is, the particles may skip the extreme points directly and fail to find the optimal solution.</p>
-<p>Therefore, the particles are classified according to whether the current fitness value is greater than the average fitness value. If the fitness value of the particle is greater than the average value, it means that the particle is still far away from the optimal position. Therefore, we need to make w larger and take ω_max.If less than or equal to the mean, then use <img src="../images/PSO/000.png" alt="img"> </p>
-<p>First of all, because the fitness value of the particle is less than the average value at this time, it means that it is relatively close to the optimal position, so w should be smaller to prevent the particle from skipping the optimal position if w is too large. But this time will bring another problem: falling into a local optimal solution. To solve this problem, I use To solve this problem, I used <img src="../images/PSO/002.png" alt="img"> to constrain the value of ω.</p>
+<p>Therefore, the particles are classified according to whether the current fitness value is greater than the average fitness value. If the fitness value of the particle is greater than the average value, it means that the particle is still far away from the optimal position. Therefore, we need to make w larger and take ω_max.If less than or equal to the mean, then use <img src="/images/PSO/000.png" alt="img"> </p>
+<p>First of all, because the fitness value of the particle is less than the average value at this time, it means that it is relatively close to the optimal position, so w should be smaller to prevent the particle from skipping the optimal position if w is too large. But this time will bring another problem: falling into a local optimal solution. To solve this problem, I use To solve this problem, I used <img src="/images/PSO/002.png" alt="img"> to constrain the value of ω.</p>
 <p>When the value is large, it means that the average value is very close to the minimum value, that is, the particles are close together and gather at one point. This is likely to be the local optimal solution, so increase w to jump out of this local optimal position. But we can’t make w too large, so we use ω_min to add a part here, which is similar to a penalty factor.</p>
 <p><em><strong>2) PSO1 —&gt; PSO2</strong></em></p>
-<p><img src="../images/PSO/003.png" alt="img"></p>
+<p><img src="/images/PSO/003.png" alt="img"></p>
 <p>In PSO2, I made the following changes to PSO1</p>
 <p><strong>1) Change ω_min to ω_max</strong></p>
 <p>Because in the actual test, it is found that if ω_min is taken, the iteration speed is very slow and often because the value of w is not large enough, it is impossible to jump out of the local optimal position. Therefore, change it to ω_max here, so that w is large enough to speed up the convergence speed and make the particles better jump out of the local optimal position.</p>
 <p><strong>2) Change the product term</strong></p>
-<p>original:  <img src="../images/PSO/004.png" alt="img"></p>
-<p>current: <img src="../images/PSO/005.png" alt="img"> </p>
+<p>original:  <img src="/images/PSO/004.png" alt="img"></p>
+<p>current: <img src="/images/PSO/005.png" alt="img"> </p>
 <p>When the fitness value of the current particle is close to the average fitness value of all particles, and the average fitness value is very close to the minimum value, it means that all the particles are gathered in one position, and this position may be the local optimal position, so To make w larger, that is, reduce it.</p>
 <p>For the constant of 500, it is an empirical value obtained by me after testing, and it has no practical meaning.</p>
 <h4 id="2-Specific-methods"><a href="#2-Specific-methods" class="headerlink" title="2. Specific methods"></a>2. Specific methods</h4><p><strong>PSO speed and position update formula:</strong></p>
-<p><img src="../images/PSO/009.png" alt="img"> </p>
-<p><img src="../images/PSO/010.png" alt="img"> </p>
+<p><img src="/images/PSO/009.png" alt="img"> </p>
+<p><img src="/images/PSO/010.png" alt="img"> </p>
 <p><strong>PSO1 inertia weight w update formula:</strong></p>
-<p><img src="../images/PSO/001.png" alt="img"></p>
+<p><img src="/images/PSO/001.png" alt="img"></p>
 <p><strong>PSO2 inertia weight w update formula:</strong></p>
-<p><img src="../images/PSO/003.png" alt="img"></p>
+<p><img src="/images/PSO/003.png" alt="img"></p>
 <p><strong>Flow chart:</strong></p>
-<img src="../images/PSO/008.png" alt="img" style="zoom: 80%;" />
+<img src="/images/PSO/008.png" alt="img" style="zoom: 80%;" />
 
-<h4 id="3-Improved-effect"><a href="#3-Improved-effect" class="headerlink" title="3. Improved effect"></a>3. Improved effect</h4><p><img src="../images/PSO/LGB.png" alt="img"></p>
+<h4 id="3-Improved-effect"><a href="#3-Improved-effect" class="headerlink" title="3. Improved effect"></a>3. Improved effect</h4><p><img src="/images/PSO/LGB.png" alt="img"></p>
 
       
     </div>
@@ -321,7 +293,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 13:21:12" itemprop="dateModified" datetime="2021-11-15T13:21:12+08:00">2021-11-15</time>
+                <time title="Modified: 2021-11-15 13:53:23" itemprop="dateModified" datetime="2021-11-15T13:53:23+08:00">2021-11-15</time>
               </span>
 
           
@@ -366,7 +338,7 @@
 <p>After a series of experiments, I found that particle swarm optimization (PSO) is the most suitable for our project. However, although the traditional PSO is better than the others in terms of convergence speed and accuracy, the good is not obvious, so I started to improve the PSO.</p>
 <p>I improved the PSO based on the PSO source code in the open source library scikit-opt (<a target="_blank" rel="noopener" href="https://scikit-opt.github.io/scikit-opt/#/docs/en">https://scikit-opt.github.io/scikit-opt/#/docs/en</a>), and improved two versions.</p>
 <h4 id="5-Model-training"><a href="#5-Model-training" class="headerlink" title="5. Model training"></a>5. Model training</h4><p>The advance prediction of landslide is essentially a 3-classification problem (normal-0, warning-1, landslide-2). We tried many machine learning models, logistic regression, SVM, random forest, etc., and compared a series of evaluation indicators such as recall rate, and finally chose lightGBM for prediction. In the end, our prediction accuracy is not bad, with recall reaching about 0.7, as shown in the figure below.</p>
-<img src="../images/TBM/TBM6.png" alt="TBM1" style="zoom:88%;" />
+<img src="/images/TBM/TBM6.png" alt="TBM1" style="zoom:88%;" />
 
 
 
@@ -683,10 +655,6 @@
   
 
 
-
-
-  
-<script src="/js/local-search.js"></script>
 
 
 
