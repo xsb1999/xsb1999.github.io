@@ -22,10 +22,12 @@
     var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="Light tomorrow with today">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Andy Xu&#39;s Blog">
 <meta property="og:url" content="http://blog.andy.fit/index.html">
 <meta property="og:site_name" content="Andy Xu&#39;s Blog">
+<meta property="og:description" content="Light tomorrow with today">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Andy Xu">
 <meta name="twitter:card" content="summary">
@@ -124,12 +126,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
 
   </li>
   </ul>
@@ -159,12 +161,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/11/15/PSO/">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/08/28/Vortex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Andy Xu">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Light tomorrow with today">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -173,7 +175,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/15/PSO/" class="post-title-link" itemprop="url">「PSO」Algorithm improvement</a>
+            <a href="/2021/08/28/Vortex/" class="post-title-link" itemprop="url">「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate</a>
         </h2>
 
         <div class="post-meta">
@@ -182,23 +184,29 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-11-15 11:08:51 / Modified: 13:56:50" itemprop="dateCreated datePublished" datetime="2021-11-15T11:08:51+08:00">2021-11-15</time>
+              <time title="Created: 2021-08-28 14:26:57" itemprop="dateCreated datePublished" datetime="2021-08-28T14:26:57+08:00">2021-08-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-18 18:58:36" itemprop="dateModified" datetime="2021-11-18T18:58:36+08:00">2021-11-18</time>
+              </span>
 
           
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>3.5k</span>
+              <span>6.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>3 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -210,40 +218,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <img src="/images/TBM/1.gif" alt="TBM1" style="zoom: 150%;" />
+          <img src="/images/Vortex/2.gif" alt="2" style="zoom:78%;" />
 
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Particle swarm optimization (PSO: Particle swarm optimization) is an evolutionary computation technology. Originated from the study of bird predation behavior. The basic idea of particle swarm optimization algorithm is to find the optimal solution through collaboration and information sharing between individuals in the group. It is simple and easy to implement and does not have many parameter adjustments. It has been widely used in the application fields of function optimization, neural network training, fuzzy system control and other genetic algorithms.</p>
-<p>The particle swarm algorithm simulates the birds in a flock of birds by designing a massless particle. The particle has only two attributes: speed and position. Speed represents the speed of movement, and position represents the direction of movement. Each particle searches for the optimal solution individually in the search space, and records it as the current individual extreme value, and shares the individual extreme value with other particles in the entire particle swarm, and finds the optimal individual extreme value as the entire particle The current global optimal solution of the swarm, all particles in the particle swarm adjust their speed and position according to the current individual extreme value they find and the current global optimal solution shared by the entire particle swarm. </p>
-<h2 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements"></a>Improvements</h2><p><strong>I made two versions of improvements to the traditional PSO</strong></p>
-<h4 id="1-Improvement-purpose"><a href="#1-Improvement-purpose" class="headerlink" title="1. Improvement purpose"></a>1. Improvement purpose</h4><p><em><strong>1) PSO0 —&gt; PSO1</strong></em></p>
-<p><img src="/images/PSO/001.png" alt="img"></p>
-<p>In PSO0, w is a constant, in PSO1, w satisfies the upper formula</p>
-<p>The larger w is, the faster the particle moves, and the larger the span of each movement. Therefore, an appropriate increase in w will shorten the optimization time. But a large w will also bring about problems, that is, the particles may skip the extreme points directly and fail to find the optimal solution.</p>
-<p>Therefore, the particles are classified according to whether the current fitness value is greater than the average fitness value. If the fitness value of the particle is greater than the average value, it means that the particle is still far away from the optimal position. Therefore, we need to make w larger and take ω_max.If less than or equal to the mean, then use <img src="/images/PSO/000.png" alt="img"> </p>
-<p>First of all, because the fitness value of the particle is less than the average value at this time, it means that it is relatively close to the optimal position, so w should be smaller to prevent the particle from skipping the optimal position if w is too large. But this time will bring another problem: falling into a local optimal solution. To solve this problem, I use To solve this problem, I used <img src="/images/PSO/002.png" alt="img"> to constrain the value of ω.</p>
-<p>When the value is large, it means that the average value is very close to the minimum value, that is, the particles are close together and gather at one point. This is likely to be the local optimal solution, so increase w to jump out of this local optimal position. But we can’t make w too large, so we use ω_min to add a part here, which is similar to a penalty factor.</p>
-<p><em><strong>2) PSO1 —&gt; PSO2</strong></em></p>
-<p><img src="/images/PSO/003.png" alt="img"></p>
-<p>In PSO2, I made the following changes to PSO1</p>
-<p><strong>1) Change ω_min to ω_max</strong></p>
-<p>Because in the actual test, it is found that if ω_min is taken, the iteration speed is very slow and often because the value of w is not large enough, it is impossible to jump out of the local optimal position. Therefore, change it to ω_max here, so that w is large enough to speed up the convergence speed and make the particles better jump out of the local optimal position.</p>
-<p><strong>2) Change the product term</strong></p>
-<p>original:  <img src="/images/PSO/004.png" alt="img"></p>
-<p>current: <img src="/images/PSO/005.png" alt="img"> </p>
-<p>When the fitness value of the current particle is close to the average fitness value of all particles, and the average fitness value is very close to the minimum value, it means that all the particles are gathered in one position, and this position may be the local optimal position, so To make w larger, that is, reduce it.</p>
-<p>For the constant of 500, it is an empirical value obtained by me after testing, and it has no practical meaning.</p>
-<h4 id="2-Specific-methods"><a href="#2-Specific-methods" class="headerlink" title="2. Specific methods"></a>2. Specific methods</h4><p><strong>PSO speed and position update formula:</strong></p>
-<p><img src="/images/PSO/009.png" alt="img"> </p>
-<p><img src="/images/PSO/010.png" alt="img"> </p>
-<p><strong>PSO1 inertia weight w update formula:</strong></p>
-<p><img src="/images/PSO/001.png" alt="img"></p>
-<p><strong>PSO2 inertia weight w update formula:</strong></p>
-<p><img src="/images/PSO/003.png" alt="img"></p>
-<p><strong>Flow chart:</strong></p>
-<img src="/images/PSO/008.png" alt="img" style="zoom: 80%;" />
-
-<h4 id="3-Improved-effect"><a href="#3-Improved-effect" class="headerlink" title="3. Improved effect"></a>3. Improved effect</h4><p><img src="/images/PSO/LGB.png" alt="img"></p>
-
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The reconnection phenomenon of quantum vortex is one of the important research fields of topological fluid mechanics. Although reconnection is the main form of changing the vortex topology, the research on reconnection is a relatively new field. There is no method that is highly reliable and does not require a large amount of manual calibration to detect the position of reconnection in the vortex. For these reasons, we propose a new method that uses deep learning combined with the Gross-Pitaevskii equation (GPE) to detect the exact time and location of the reconnection.</p>
+<p>Quantum vortices are similar to bubbles in water. They can move, change shape, meet other vortices, combine, reconnect, and then separate into two new vortices. The purpose of this project is to find the precise time and location of all vortices which are reconnected.</p>
+<p>As shown in the figure below, there are two vortices in one space, and they intersect (reconnect) at three places. Our task is to identify the specific space-time coordinates of all these points.</p>
+<img src="/images/Vortex/1.png" alt="1" style="zoom:60%;" />
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/28/Vortex/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -262,12 +250,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/11/14/TBM/">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/07/23/NPMS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Andy Xu">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Light tomorrow with today">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -276,7 +264,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/14/TBM/" class="post-title-link" itemprop="url">「TBM」Intelligent Perception System</a>
+            <a href="/2021/07/23/NPMS/" class="post-title-link" itemprop="url">「NPMS」Neusoft profit management system</a>
         </h2>
 
         <div class="post-meta">
@@ -286,14 +274,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-11-14 21:48:47" itemprop="dateCreated datePublished" datetime="2021-11-14T21:48:47+08:00">2021-11-14</time>
+              <time title="Created: 2021-07-23 18:06:37" itemprop="dateCreated datePublished" datetime="2021-07-23T18:06:37+08:00">2021-07-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 13:53:23" itemprop="dateModified" datetime="2021-11-15T13:53:23+08:00">2021-11-15</time>
+                <time title="Modified: 2021-11-18 17:34:03" itemprop="dateModified" datetime="2021-11-18T17:34:03+08:00">2021-11-18</time>
               </span>
 
           
@@ -301,13 +289,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>5.6k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>5 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -319,37 +307,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/images/TBM/TBM1.png" alt="TBM1"></p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>This project is based on the real-time rock-machine interaction data generated by Jilin Yinsong TBM (Tunnel Boring Machine) excavation in the tunnel. The machine learning method is used to detect the danger of the road section ahead during the TBM tunneling, that is, to determine whether there is a collapse or fault in the road section ahead. And remind the driver in time. In the end, our team is committed to developing a system that can accurately control the real-time parameters and road conditions of the TBM during tunnel excavation. The system mainly has three modules: advance prediction of landslides, advance prediction of faults, and real-time data prediction.</p>
-<h2 id="Research-task"><a href="#Research-task" class="headerlink" title="Research task"></a>Research task</h2><h4 id="1-Data-preprocessing"><a href="#1-Data-preprocessing" class="headerlink" title="1. Data preprocessing"></a>1. Data preprocessing</h4><p>Use libraries such as numpy and pandas in Python to process the initial data, including modifying the data format, data partitioning, merging, removing outliers and interpolation, etc.</p>
-<h4 id="2-Three-stage-division-normal-early-warning-landslide"><a href="#2-Three-stage-division-normal-early-warning-landslide" class="headerlink" title="2. Three-stage division (normal, early warning, landslide)"></a>2. Three-stage division (normal, early warning, landslide)</h4><p>According to the changes of various rock-machine interaction parameters before the collapse of the TBM during the tunneling process, the tunneling process can be divided into three stages: the normal section, the early warning section, and the collapse section. Among them, the normal section is defined as the normal tunneling section, that is, the tunneling section outside the impact range of the front collapse. During the tunneling process, the TBM machine parameters do not respond to the collapse; the early warning section refers to the area within the impact range of the front collapse. In the tunneling section before the location, the TBM machine parameters will respond to the collapse in this section of the tunneling process; the collapsed section refers to the section where the TBM is tunneling at the location of the collapse.</p>
-<p>The significance of the early warning section is to realize the advance prediction of the landslide. In the process of TBM tunnelling, it is meaningless to predict whether there will be a landslide at the current moment. It is worthy of our study to make an early warning of the landslide ahead. Therefore, I need to mark an early warning segment for these data, so that the data is of three types. What I have to do is to predict whether the current TBM tunneling is an early warning section (essentially a 3-classification problem), and if it is, an alarm will be issued immediately, indicating that there is a possibility of a landslide ahead.</p>
-<p>The problem now is that from the existing data, I can obtain the data of the normal section and the landslide section, but cannot get the data of the early warning section. Therefore, I need to artificially formulate a rule according to the change law of different rock-machine interaction parameters near the landslide. To divide the early warning section.</p>
-<p>The early warning segment is divided by analyzing the rock-machine interaction parameters of TBM before the collapse. Among them, the “cutterhead torque” has the most significant response to the collapse. The cutter head torque will increase sharply before the collapse, and suddenly drop sharply when the torque increases to the maximum value. Therefore, I choose to divide the pre-warning segment with the maximum torque point as the limit, and set the descending segment of the cutter head torque before the collapse area as the pre-warning area (as shown in the figure below).</p>
-<img src="/images/TBM/TBM3.png" alt="TBM1" style="zoom:75%;" />
-
-<h4 id="3-Feature-selection-amp-Interpretation-with-SHAP"><a href="#3-Feature-selection-amp-Interpretation-with-SHAP" class="headerlink" title="3. Feature selection &amp; Interpretation with SHAP"></a>3. Feature selection &amp; Interpretation with SHAP</h4><p>Because the rock-machine interaction parameters generated during TBM excavation have very clear physical meanings, these data are all understood in the field of civil engineering, and our instructor is from the School of Civil Engineering. Therefore, instead of directly using traditional machine learning, he is more inclined to adopt an interpretable method, because it can combine machine learning with existing civil engineering knowledge. Therefore, I found SHAP, which can visually display the importance of features and the impact of feature size on the prediction results of machine learning models (for example: when feature A is greater than 5, the model is more inclined to classify a certain point into the first category ; When the feature A is less than 5, the model is more inclined to classify a certain point into the second category). Therefore, I used SHAP and combined the knowledge in the field of civil engineering to initially screen out 20 features.</p>
-<p>After that, I sequentially selected different numbers of features from these 20 features, performed machine learning model training and result evaluation, and finally selected 15 from these 20 features as the final feature.</p>
-<p>The relationship between the features obtained by SHAP and the model results (the larger the SHAP value, the model is more likely to predict 2[collapse], otherwise it tends to predict 0[normal]): </p>
-<p><img src="/images/TBM/TBM4.png" alt="TBM1"></p>
-<p>Feature importance map obtained by SHAP: </p>
-<p><img src="/images/TBM/TBM5.png" alt="TBM1"></p>
-<h4 id="4-Hyperparameter-optimization"><a href="#4-Hyperparameter-optimization" class="headerlink" title="4. Hyperparameter optimization"></a>4. Hyperparameter optimization</h4><p>Hyperparameter optimization in machine learning is very important because it directly determines the result of a model. Because traditional grid search is too slow, I thought of adopting some swarm intelligence optimization algorithms, such as differential evolution algorithm, genetic algorithm, particle swarm algorithm, simulated annealing algorithm, ant colony algorithm, immune optimization algorithm, fish school algorithm and so on.</p>
-<p>After a series of experiments, I found that particle swarm optimization (PSO) is the most suitable for our project. However, although the traditional PSO is better than the others in terms of convergence speed and accuracy, the good is not obvious, so I started to improve the PSO.</p>
-<p>I improved the PSO based on the PSO source code in the open source library scikit-opt (<a target="_blank" rel="noopener" href="https://scikit-opt.github.io/scikit-opt/#/docs/en">https://scikit-opt.github.io/scikit-opt/#/docs/en</a>), and improved two versions.</p>
-<h4 id="5-Model-training"><a href="#5-Model-training" class="headerlink" title="5. Model training"></a>5. Model training</h4><p>The advance prediction of landslide is essentially a 3-classification problem (normal-0, warning-1, landslide-2). We tried many machine learning models, logistic regression, SVM, random forest, etc., and compared a series of evaluation indicators such as recall rate, and finally chose lightGBM for prediction. In the end, our prediction accuracy is not bad, with recall reaching about 0.7, as shown in the figure below.</p>
-<img src="/images/TBM/TBM6.png" alt="TBM1" style="zoom:88%;" />
-
-
-
-<h4 id="6-Use-pyqt-to-develop-Windows-desktop-applications"><a href="#6-Use-pyqt-to-develop-Windows-desktop-applications" class="headerlink" title="6. Use pyqt to develop Windows desktop applications"></a>6. Use pyqt to develop Windows desktop applications</h4><p>Use pyqt to complete the development of desktop applications and realize the functions of three modules: collapse warning, fault warning, and real-time prediction of rock-machine interaction parameters. Below are some screenshots.</p>
-<p><strong>Data preprocessing:</strong> </p>
-<p><img src="/images/TBM/TBM7.png" alt="TBM1"></p>
-<p><strong>Normal period:</strong> </p>
-<p><img src="/images/TBM/TBM8.png" alt="TBM1"></p>
-<p><strong>Warning period:</strong></p>
-<p><img src="/images/TBM/TBM9.png" alt="TBM1"></p>
-
+          <p><img src="/images/NPMS/7.png" alt="1"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Neusoft Group’s existing profit management system continues to develop and expand with the company’s scale and the increase in the number of users, resulting in an increase in system risk, which affects core management businesses such as financial accounting. The existing system architecture and customized functions can no longer meet the management needs of the company’s sustainable development. Therefore, a more complete profit management system needs to be re-developed. The modules currently under development include customer management module, opportunity management module, and daily report management module. Project and related business management functions need to be further developed.</p>
+<p>The customer management module includes customer management and handover. The opportunity management module includes opportunity maintenance, approval and tracking. Opportunities refer to business opportunities brought by customers. For example, Huawei will launch a new product research and development plan recently. This is an opportunity for Huawei, a customer. As mentioned above, one customer can correspond to multiple opportunities. Daily report management includes employees’ daily daily report filling, leader’s daily report query and other related functions.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/23/NPMS/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -368,12 +336,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/11/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/05/08/KG_QA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Andy Xu">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Light tomorrow with today">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -382,7 +350,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">我的第一篇博客文章</a>
+            <a href="/2021/05/08/KG_QA/" class="post-title-link" itemprop="url">「MQAS」Medical QA System Based On Knowledge Graph</a>
         </h2>
 
         <div class="post-meta">
@@ -392,14 +360,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-11-08 20:27:56" itemprop="dateCreated datePublished" datetime="2021-11-08T20:27:56+08:00">2021-11-08</time>
+              <time title="Created: 2021-05-08 20:27:56" itemprop="dateCreated datePublished" datetime="2021-05-08T20:27:56+08:00">2021-05-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-15 13:25:09" itemprop="dateModified" datetime="2021-11-15T13:25:09+08:00">2021-11-15</time>
+                <time title="Modified: 2021-11-18 18:59:15" itemprop="dateModified" datetime="2021-11-18T18:59:15+08:00">2021-11-18</time>
               </span>
 
           
@@ -407,13 +375,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>9</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -425,7 +393,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><h3 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h3><h3 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h3>
+          <p><img src="/images/QA_KG/1.png" alt="1"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>At present, the intelligentization of medical diagnosis in our country needs to be improved. Due to the lack of a convenient and accurate channel for consultation, many patients lack a relatively accurate understanding of their condition. This project is based on knowledge graphs, natural language processing and other related technologies to realize knowledge-driven medical intelligence: preliminary diagnosis of the patient’s text and voice input symptom description, combined with the patient’s past medical history to provide diagnosis-oriented auxiliary decision-making and knowledge services. It realizes an intelligent and relatively accurate channel for patients’ consultation and consultation anytime and anywhere, and reduces the burden of offline manual diagnosis by doctors.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/08/KG_QA/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -443,7 +420,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -504,22 +481,20 @@
     <img class="site-author-image" itemprop="image" alt="Andy Xu"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Andy Xu</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">Light tomorrow with today</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -551,18 +526,8 @@
   </div>
 
       </div>
-	  
-		<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-		<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-		<div class="widget-wrap">
-			<h3 class="widget-title">Tag Cloud</h3>
-			<div id="myCanvasContainer" class="widget tagcloud">
-				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PSO/" rel="tag">PSO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt/" rel="tag">PyQt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SHAP/" rel="tag">SHAP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swarm-intelligence/" rel="tag">Swarm intelligence</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a><span class="tag-list-count">1</span></li></ul>
-				</canvas>
-		</div>
-	</div>
-	
+<br><br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4278298&auto=1&height=66"></iframe>
 
     </div>
   </aside>
@@ -590,12 +555,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">9k</span>
+    <span title="Symbols count total">56k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">9 mins.</span>
+    <span title="Reading time total">51 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
@@ -688,7 +653,7 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
   <script id="ribbon" src="/js/src/canvas-ribbon.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
 </html>
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/clicklove.js"></script>

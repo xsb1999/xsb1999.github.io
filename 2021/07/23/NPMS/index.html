@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IntroductionNeusoft Group’s existing profit management system continues to develop and expand with the company’s scale and the increase in the number of users, resulting in an increase in system risk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「NPMS」Neusoft profit management system">
+<meta property="og:url" content="http://blog.andy.fit/2021/07/23/NPMS/index.html">
+<meta property="og:site_name" content="Andy Xu&#39;s Blog">
+<meta property="og:description" content="IntroductionNeusoft Group’s existing profit management system continues to develop and expand with the company’s scale and the increase in the number of users, resulting in an increase in system risk">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/7.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/13.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/14.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/15.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/16.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/1.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/2.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/3.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/4.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/5.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/6.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/9.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/10.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/12.png">
+<meta property="og:image" content="http://blog.andy.fit/images/NPMS/11.png">
+<meta property="article:published_time" content="2021-07-23T10:06:37.000Z">
+<meta property="article:modified_time" content="2021-11-18T09:34:03.185Z">
+<meta property="article:author" content="Andy Xu">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Spring Cloud">
+<meta property="article:tag" content="Spring Security">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="Maven">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.andy.fit/images/NPMS/7.png">
+
+<link rel="canonical" href="http://blog.andy.fit/2021/07/23/NPMS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>「NPMS」Neusoft profit management system | Andy Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="Andy Xu's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Andy Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-curriculum-vitae">
+
+    <a href="https://xsb1999.gitee.io/xsb1999.gitee.io" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>Curriculum vitae</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/07/23/NPMS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Andy Xu">
+      <meta itemprop="description" content="Light tomorrow with today">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Andy Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「NPMS」Neusoft profit management system
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-23 18:06:37" itemprop="dateCreated datePublished" datetime="2021-07-23T18:06:37+08:00">2021-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-18 17:34:03" itemprop="dateModified" datetime="2021-11-18T17:34:03+08:00">2021-11-18</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/images/NPMS/7.png" alt="1"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Neusoft Group’s existing profit management system continues to develop and expand with the company’s scale and the increase in the number of users, resulting in an increase in system risk, which affects core management businesses such as financial accounting. The existing system architecture and customized functions can no longer meet the management needs of the company’s sustainable development. Therefore, a more complete profit management system needs to be re-developed. The modules currently under development include customer management module, opportunity management module, and daily report management module. Project and related business management functions need to be further developed.</p>
+<p>The customer management module includes customer management and handover. The opportunity management module includes opportunity maintenance, approval and tracking. Opportunities refer to business opportunities brought by customers. For example, Huawei will launch a new product research and development plan recently. This is an opportunity for Huawei, a customer. As mentioned above, one customer can correspond to multiple opportunities. Daily report management includes employees’ daily daily report filling, leader’s daily report query and other related functions.</p>
+<span id="more"></span>
+
+
+
+
+<h2 id="My-work"><a href="#My-work" class="headerlink" title="My work"></a>My work</h2><p>I am responsible for the back-end development of the system. First clarify the requirements, design ER diagrams, class diagrams, sequence diagrams and other related models. Then, referring to these diagrams, 33 tables of customers, employees, departments, opportunities, handover logs, etc. were designed. Use MySQL to complete the creation of the database. Use mybatis as the persistence layer framework, and use mybatis-plus to automatically generate controller, service, and mapper.</p>
+<p>After that, I participated in the preparation of all the back-end API documents. Among them, the customer management module has 18 APIs, including the addition, deletion and modification of customers, customer handover, customer freezing, and many secondary linkages and other page functions. The opportunity management module has 19 APIs, including opportunity addition, deletion, modification, inspection, opportunity tracking, opportunity approval, and so on. The daily report management module has 5 APIs, including daily report filling, daily report query and so on.</p>
+<p>I use springcloud when developing, and treat the above three modules, customer management, opportunity management, and daily report management as three independent services, in other words, consumers. The gateway is used for access, and the authorization authentication uses oath2 and spring-security. The entire service includes three eureka servers, one gateway, one oath2-auth and three consumers. I also used redis as a cache database and published the project on the Alibaba Cloud server.</p>
+<h2 id="My-innovation-point"><a href="#My-innovation-point" class="headerlink" title="My innovation point"></a>My innovation point</h2><p>In opportunity approval, multiple approvals by different leaders are involved, and the order of approval is determined. Only after the first approver passes the process will the process proceed to the next person for approval. In addition, the approval results have three results: “pass, reject, and reject the modification”. In order to handle this business, I designed a number of temporary storage tables (buffer) to store the “opportunity” information pending approval. In this way, the original “opportunities” table can not be modified, making the entire approval process safer for database operations.</p>
+<h2 id="Detailed-design"><a href="#Detailed-design" class="headerlink" title="Detailed design"></a>Detailed design</h2><p><strong>The structure of the backend of NPMS</strong></p>
+<p><img src="/images/NPMS/13.png" alt="1"></p>
+<p><img src="/images/NPMS/14.png" alt="1"></p>
+<p><img src="/images/NPMS/15.png" alt="1"></p>
+<p><strong>I used spring-cloud and registered all servers to eureka server, the figure are as follow.</strong></p>
+<p><img src="/images/NPMS/16.png" alt="1"></p>
+<h2 id="System-Implementation"><a href="#System-Implementation" class="headerlink" title="System Implementation"></a>System Implementation</h2><h4 id="1-Customer-Management"><a href="#1-Customer-Management" class="headerlink" title="1. Customer Management"></a>1. Customer Management</h4><ol>
+<li><p>When adding a new customer, I will realize an auto increment by myself, which is select the max customer id from the table and add one.</p>
+</li>
+<li><p> The customer association cannot be associated with multi-level parent nodes. If A-&gt;B, B-&gt;C then A can’t -&gt; C.</p>
+</li>
+</ol>
+<ul>
+<li>If the current customer is D and A and B are added as associated customers, then see if you can find A C in the table where A-&gt;C and B-&gt;C (add, modify)</li>
+<li>If the current customer is D and A and B are added as associated customers, then check the table for A-&gt;B (add, modify)</li>
+<li>If the current customer is D, and if A is added as an associated customer, then see if you can find an E in the table where A-&gt;E and D-&gt;E (modify)</li>
+</ul>
+<ol start="3">
+<li><p>Using transactions for unified commit or rollback by adding @Transactional (rollbackFor=Exception.class)</p>
+</li>
+<li><p>Key codes</p>
+</li>
+</ol>
+<p><img src="/images/NPMS/1.png" alt="1"></p>
+<br>
+
+<h4 id="2-Opportunity-Management"><a href="#2-Opportunity-Management" class="headerlink" title="2. Opportunity Management"></a>2. Opportunity Management</h4><h6 id="1-querying-opportunity"><a href="#1-querying-opportunity" class="headerlink" title="1. querying opportunity"></a>1. querying opportunity</h6><img src="/images/NPMS/2.png" alt="1" style="zoom:33%;" />
+
+<h6 id="2-adding-opportunity"><a href="#2-adding-opportunity" class="headerlink" title="2. adding opportunity"></a>2. adding opportunity</h6><img src="/images/NPMS/3.png" alt="1" style="zoom: 33%;" />
+
+<h6 id="3-updating-opportunity"><a href="#3-updating-opportunity" class="headerlink" title="3. updating opportunity"></a>3. updating opportunity</h6><img src="/images/NPMS/4.png" alt="1" style="zoom:100%;" />
+
+
+
+<h4 id="3-Approval"><a href="#3-Approval" class="headerlink" title="3. Approval"></a>3. Approval</h4><h6 id="1-Creating-4-new-tables-as-buffer-tables"><a href="#1-Creating-4-new-tables-as-buffer-tables" class="headerlink" title="1. Creating 4 new tables as buffer tables"></a>1. Creating 4 new tables as buffer tables</h6><p>The four tables are created in order to store the inserted or updated opportunity information. They are opportunity_buffer, sub_opportunity_buffer, competitor_buffer and payer_buffer. These four tables are corresponding to the original four tables, which are opportunity, sub_opportunity, competitor, and payer. In this way, I can store the new data in the buffer. When the approval is pass, we will transfer the data from the buffer to the normal table.</p>
+<h6 id="2-Approval-flow-chart"><a href="#2-Approval-flow-chart" class="headerlink" title="2. Approval flow chart"></a>2. Approval flow chart</h6><p><em>(This picture is rather vague, you can download it and see)</em></p>
+<p><img src="/images/NPMS/5.png" alt="1"></p>
+<br>
+
+<h4 id="4-Oauth2-amp-Gateway"><a href="#4-Oauth2-amp-Gateway" class="headerlink" title="4. Oauth2 &amp; Gateway"></a>4. Oauth2 &amp; Gateway</h4><p>In realizing oauth2 authentication using gateway, I met cross-domain problems which had bothered me for a long time. In the end, I got the answer online that I need to add a configuration file in gateway to allow cross-domain. The sample codes are shown as following. </p>
+<p>Then I considered all the roles of those employees and set the rules of requests url that some rules can or can’t access.</p>
+<p><img src="/images/NPMS/6.png" alt="1"></p>
+<br>
+
+<h2 id="System-Screenshots"><a href="#System-Screenshots" class="headerlink" title="System Screenshots"></a>System Screenshots</h2><p><img src="/images/NPMS/9.png" alt="1"></p>
+<p><img src="/images/NPMS/10.png" alt="1"></p>
+<p><img src="/images/NPMS/12.png" alt="1"></p>
+<p><img src="/images/NPMS/11.png" alt="1"></p>
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a target="_blank" rel="noopener" href="https://github.com/xsb1999/npms-backend">GitHub</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+              <a href="/tags/Spring-Cloud/" rel="tag"><i class="fa fa-tag"></i> Spring Cloud</a>
+              <a href="/tags/Spring-Security/" rel="tag"><i class="fa fa-tag"></i> Spring Security</a>
+              <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+              <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+              <a href="/tags/Maven/" rel="tag"><i class="fa fa-tag"></i> Maven</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/08/KG_QA/" rel="prev" title="「MQAS」Medical QA System Based On Knowledge Graph">
+      <i class="fa fa-chevron-left"></i> 「MQAS」Medical QA System Based On Knowledge Graph
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/28/Vortex/" rel="next" title="「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate">
+      「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-work"><span class="nav-number">2.</span> <span class="nav-text">My work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#My-innovation-point"><span class="nav-number">3.</span> <span class="nav-text">My innovation point</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Detailed-design"><span class="nav-number">4.</span> <span class="nav-text">Detailed design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Implementation"><span class="nav-number">5.</span> <span class="nav-text">System Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Customer-Management"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. Customer Management</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Opportunity-Management"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. Opportunity Management</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-querying-opportunity"><span class="nav-number">5.0.2.0.1.</span> <span class="nav-text">1. querying opportunity</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-adding-opportunity"><span class="nav-number">5.0.2.0.2.</span> <span class="nav-text">2. adding opportunity</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-updating-opportunity"><span class="nav-number">5.0.2.0.3.</span> <span class="nav-text">3. updating opportunity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Approval"><span class="nav-number">5.0.3.</span> <span class="nav-text">3. Approval</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-Creating-4-new-tables-as-buffer-tables"><span class="nav-number">5.0.3.0.1.</span> <span class="nav-text">1. Creating 4 new tables as buffer tables</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Approval-flow-chart"><span class="nav-number">5.0.3.0.2.</span> <span class="nav-text">2. Approval flow chart</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Oauth2-amp-Gateway"><span class="nav-number">5.0.4.</span> <span class="nav-text">4. Oauth2 &amp; Gateway</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Screenshots"><span class="nav-number">6.</span> <span class="nav-text">System Screenshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Link"><span class="nav-number">7.</span> <span class="nav-text">Link</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Andy Xu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Andy Xu</p>
+  <div class="site-description" itemprop="description">Light tomorrow with today</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsb1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsb1999" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/shibo_xu_99@163.com" title="E-Mail → shibo_xu_99@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="wechat:Xu Shibo" title="WeChat → wechat:Xu Shibo" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-child fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://taylorchyi.xyz/" title="https:&#x2F;&#x2F;taylorchyi.xyz&#x2F;" rel="noopener" target="_blank">Taylor Chyi</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+<br><br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4278298&auto=1&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">51 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+  <script id="ribbon" src="/js/src/canvas-ribbon.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

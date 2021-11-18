@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="OverviewThe system developed in this practice project is the outpatient module in Neusoft Cloud Hospital Management System, which includes the following business functions. • Patient registration• Pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HIS」Neusoft Cloud Medical System">
+<meta property="og:url" content="http://blog.andy.fit/2020/07/17/HIS/index.html">
+<meta property="og:site_name" content="Andy Xu&#39;s Blog">
+<meta property="og:description" content="OverviewThe system developed in this practice project is the outpatient module in Neusoft Cloud Hospital Management System, which includes the following business functions. • Patient registration• Pa">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/50.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/1.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/2.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/3.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/4.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/5.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/6.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/7.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/8.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/9.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/10.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/11.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/12.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/13.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/14.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/15.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/16.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/17.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/18.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/19.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/20.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/21.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/22.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/23.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/24.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/25.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/26.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/27.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/28.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/29.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/30.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/31.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/32.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/33.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/34.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/35.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/36.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/37.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/38.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/39.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/40.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/41.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/42.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/43.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/44.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/45.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/46.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/47.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/48.png">
+<meta property="og:image" content="http://blog.andy.fit/images/HIS/49.png">
+<meta property="article:published_time" content="2020-07-17T10:16:06.000Z">
+<meta property="article:modified_time" content="2021-11-18T11:01:53.598Z">
+<meta property="article:author" content="Andy Xu">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Maven">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="Bootstrap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.andy.fit/images/HIS/50.png">
+
+<link rel="canonical" href="http://blog.andy.fit/2020/07/17/HIS/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>「HIS」Neusoft Cloud Medical System | Andy Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="Andy Xu's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Andy Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-curriculum-vitae">
+
+    <a href="https://xsb1999.gitee.io/xsb1999.gitee.io" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>Curriculum vitae</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2020/07/17/HIS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Andy Xu">
+      <meta itemprop="description" content="Light tomorrow with today">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Andy Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「HIS」Neusoft Cloud Medical System
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-17 18:16:06" itemprop="dateCreated datePublished" datetime="2020-07-17T18:16:06+08:00">2020-07-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-18 19:01:53" itemprop="dateModified" datetime="2021-11-18T19:01:53+08:00">2021-11-18</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>24k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>22 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/images/HIS/50.png" alt="1"></p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>The system developed in this practice project is the outpatient module in Neusoft Cloud Hospital Management System, which includes the following business functions.</p>
+<p>• Patient registration<br>• Patient withdrawal number<br>• Doctor visits<br>• The doctor distributes medicine<br>• Patient payment<br>• Dispensing medicine at the pharmacy</p>
+<p><strong>My work :</strong> </p>
+<p>The front-end page part uses Bootstrap framework, part uses Axure to design and typeset the page; the back-end uses SpringBoot framework, uses Mybatis as the persistence layer framework, and uses Thymeleaf as the template engine to realize the front-end and back-end interaction; uses JavaScript, jQuery and Ajax to achieve related Perfect function.</p>
+<span id="more"></span>
+
+
+
+<h2 id="Relevant-Technologies"><a href="#Relevant-Technologies" class="headerlink" title="Relevant Technologies"></a>Relevant Technologies</h2><h3 id="1-Theoretical-basis"><a href="#1-Theoretical-basis" class="headerlink" title="1. Theoretical basis"></a>1. Theoretical basis</h3><p><strong>a) Spring Boot backend framework and Thymeleaf template engine</strong></p>
+<p>The core idea of Spring Boot is the separation of front and back ends and the development of annotations. Thymeleaf is used as a template engine, and Thymeleaf syntax is used to mark the HTML pages on the front end. In the back end, the controller can be used to obtain front-end data or assign values to the front-end data, and then perform operations. (Write/update database…), in this way, the separation and interaction between front and back ends are realized. In this way, you can omit the Dao layer and the Service layer in the original SSM framework, and interact with the front end directly in the controller.</p>
+<p><strong>b) Mybatis persistence layer framework</strong></p>
+<p>You can use Mybatis to operate the database more conveniently. Write the sql statement directly in mapper.xml, and then map it to a mapper class to directly call sql. There is no need to create a BaseDao class on the Dao layer to control the database like the original jdbc. The connection and the preparation of sql statements. In this way, it not only greatly simplifies the complexity of interacting with the database, but also makes the entire structure clear (1 mapper corresponds to 1 function).</p>
+<p><strong>c) Configuration classes under the config package</strong></p>
+<p>Under the config package, there is a configuration class named MyMvcConfig, which implements the WebMvcConfigurer interface and rewrites the addViewControllers() method, so that multiple different URLs can be set for the same HTML page; in addition, in springboot , MyMvcConfig can also set url for all HTML files in the template package.</p>
+<p><strong>d) Interceptor</strong></p>
+<p>Mainly implemented in the login function part, it is a permission interception; if the user does not enter the correct user name and password, they will be forced to return to the login page when they enter the web page directly. The function of the interceptor is to intercept resources in a targeted manner and intercept requests that do not meet the requirements. In the project, realize the requirement that users must log in first.</p>
+<h3 id="2-Project-development-method"><a href="#2-Project-development-method" class="headerlink" title="2. Project development method"></a>2. Project development method</h3><ul>
+<li>The project adopts an incremental development method, that is, multiple iterations, each iteration realizes the function of a module</li>
+<li>After each increment is completed, the module should be tested. For example, after completing the registration module, you need to register a number for testing, and see if there is a new patient registration information in the registration form in the database. If there is an error, find the cause immediately and modify it. (It is important to ensure the correctness of a single function, because it is relatively easy to modify a single function, but it is difficult to modify after all integration)</li>
+<li>After completing several modules with relatively large correlations, perform integration tests on these modules, for example, from registration to consultation (after registration, a new patient will be added to the doctor’s waiting list). If there is an error, find the cause immediately and modify it.</li>
+<li>After all modules are implemented, a general test is performed. (It is best not to make mistakes, otherwise a lot of changes will be required and the workload will increase sharply)</li>
+</ul>
+<h3 id="3-Development-tools"><a href="#3-Development-tools" class="headerlink" title="3. Development tools"></a>3. Development tools</h3><p>IntelliJ  IDEA 2020.1.2</p>
+<h3 id="4-Development-Environment"><a href="#4-Development-Environment" class="headerlink" title="4. Development Environment"></a>4. Development Environment</h3><p><strong>Operating system</strong>: win7 Professional Edition<br><strong>Browser</strong>: Chrome<br><strong>Operating environment</strong>: jdk1.8, Spring Boot 2.3.1</p>
+<br>
+
+<h2 id="System-Analysis"><a href="#System-Analysis" class="headerlink" title="System Analysis"></a>System Analysis</h2><p><img src="/images/HIS/1.png" alt="1"></p>
+<h3 id="1-User-login"><a href="#1-User-login" class="headerlink" title="1. User login"></a>1. User login</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>The user logs in on the login page. If the user name and password are correct, enter the user’s page, otherwise it prompts: “User name or password is wrong!”.</li>
+<li>If you visit other pages directly without logging in, you will be bounced back to the login page to log in and display: “No permission, please log in first!”</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<p><strong>1. Login Interceptor:</strong></p>
+<p>If the user is not logged in and directly accesses an internal page, you need to determine whether the SessionUser attribute exists in the current Session. If it exists (not empty), you can let it go, if it does not exist (not empty), then intercept and jump directly to the login page , And display: “No permission, please log in first!”</p>
+<p><strong>2. User name and password verification:</strong></p>
+<p>After the user enters the user name and password, click the “OK” button to start verification. The back-end uses the controller to requestParam from the front-end page (getting the user name and password entered by the user), and then to the user table in the database to query whether there is a user whose user name and password match the input. If the user exists, add the attributes of the user’s composition Session to the Session; if the user does not exist, it will display “Username or password error!”</p>
+<h3 id="2-Registration"><a href="#2-Registration" class="headerlink" title="2. Registration"></a>2. Registration</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>Patients need to enter personal information such as name, ID number, gender, birthday, and home address when registering, and select the department, number, corresponding doctor, as well as the date of visit and the date of registration.</li>
+<li>If the patient misses the information, it will display: “Registration failed, the information is incomplete!”</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<p><strong>1. Generate medical record number and invoice number:</strong></p>
+<p>After entering the registration page, a 6-digit medical record number and a 6-digit invoice number will be automatically generated. The principle of generation is to generate randomly. If there is a repetition, add 1 until there is no repetition, which is similar to linear detection when resolving hash conflicts.</p>
+<p><strong>2. Use JS to achieve the following functions:</strong></p>
+<p>(1) Calculate age based on the date of birth entered.<br>(2) Department, number, doctor, three-level linkage.<br>(3) Calculate the registered amount based on the number and whether the medical records are needed.</p>
+<p><strong>3. Write the registration information into the registration form in the database:</strong></p>
+<p>The registration information entered by the front-end user is obtained in the registration controller, and then the patient information is written into the patient form, and then the registration information is written into the registration form. The consultation status in the registration form is 2 (not diagnosed).</p>
+<h3 id="3-Retire"><a href="#3-Retire" class="headerlink" title="3. Retire"></a>3. Retire</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>Patients can only withdraw their numbers when they have not been diagnosed.</li>
+<li>Patients cannot withdraw their account numbers when they have been diagnosed.</li>
+<li>Patients cannot withdraw the number for the second time in the state of withdrawal.</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<p><strong>1. Enter the patient’s medical record number for query, and get the patient’s registration information:</strong></p>
+<p>The back-end account number controller obtains the medical record number entered by the front-end user, queries the registration information in the database, and then uses Thymeleaf to transmit the information to the front-end page.</p>
+<p><strong>2. Determine whether you can withdraw your account:</strong></p>
+<p>Use JS to determine the value of the registered status. If it is “not diagnosed”, the account can be withdrawn, if it is “diagnosed” or “withdrawn”, the message “cannot return the account!” will pop up.</p>
+<h3 id="4-Doctor-visits"><a href="#4-Doctor-visits" class="headerlink" title="4. Doctor visits"></a>4. Doctor visits</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>When the doctor sees the patient, he can fill in the description information to the “medical record home page” according to the patient’s condition, including: chief complaint, current medical history, current medical treatment, past history, allergy history, physical examination; the doctor can check the waiting time The list of patients who have been diagnosed and the list of patients who have been diagnosed, and the patients can be selected for consultation.</li>
+<li>After the doctor clicks the “Submit” button, the system will write the diagnostic information into the medical record in the database, and change the consultation status in the registration form to 1 (diagnosed).</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<p><strong>1. Display the list of undiagnosed patients and the list of diagnosed patients:</strong></p>
+<p>In the visit controller, get the undiagnosed and diagnosed patient lists of the current doctor (you can get the name of the current doctor from the Session) from the database, and then addAttribute to the model in the controller (undiagnosed list and diagnosed list) ), and then get the two lists on the front end, and use Thymeleaf to loop output to the two tables.</p>
+<p><strong>2. Select the patient and confirm the consultation:</strong></p>
+<p>In the list of undiagnosed and diagnosed patients, there is a check box at the end of each row. The doctor clicks the check box to confirm the start of the consultation, and then the current patient’s information (name + medical record number) will be displayed on the page. If you do not select a patient to start the consultation directly, it will prompt “Please select 1 patient!”</p>
+<p><strong>3. Click Submit, write the medical record form, and update the consultation status:</strong></p>
+<p>After the doctor finishes writing the diagnosis information, click the “Submit” button, and the back-end consultation controller will obtain the diagnosis information and write it into the medical record form, and change the consultation status in the registration form to 1 (diagnosed).</p>
+<h3 id="5-Prescribe-medication"><a href="#5-Prescribe-medication" class="headerlink" title="5. Prescribe medication"></a>5. Prescribe medication</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>Doctors can prescribe medications based on existing templates, or create new prescriptions and delete prescriptions.</li>
+<li>Doctors can click on the “Show” button of each prescription to view the drug details in the prescription.</li>
+<li>Finally, the doctor selects the prescription to be issued and adds it to the outpatient prescription first, and then clicks the “Issuing” button to complete the issuance of the prescription.</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<p><strong>1. Add new prescriptions:</strong></p>
+<p>The doctor can add prescriptions. Click the “Add prescriptions” button, enter the name of the new prescription, and then select drugs (up to 5 types) to complete the prescription augmentation operation.</p>
+<p><strong>2. Delete prescriptions:</strong></p>
+<p>The doctor can delete the prescription, click the “Delete prescription” button, enter the prescription name, the prescription will be deleted.</p>
+<p><strong>3. Add to outpatient prescription:</strong></p>
+<p>The doctor clicks the “use” button of each line of prescription to add the prescription to the patient’s outpatient prescription. The doctor can delete prescriptions from the added prescriptions.</p>
+<p><strong>4. Issuing:</strong></p>
+<p>If a doctor wants to prescribe multiple prescriptions, he needs to prescribe multiple prescriptions, and can only prescribe one prescription each time. After the issuance, the issued prescription information will be written into the patient’s prescription list. The drug status in the table is “Undistributed Medicine”, and the payment status is “Unpaid”.</p>
+<h3 id="6-Charges"><a href="#6-Charges" class="headerlink" title="6. Charges"></a>6. Charges</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>The toll collector enters the patient’s medical record number to query all the drug information for the patient’s payment on behalf of the patient.</li>
+<li>Patients choose the drugs to be paid to complete the payment.</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<ol>
+<li>Enter the patient’s medical record number, you can query the patient’s drug list for payment on behalf of the patient.</li>
+<li>For the drug list, there is a check box at the end of each line, you can select all with one click and pay all the fees, or you can select only a part of them for payment.</li>
+<li>Only unpaid medicines will be displayed in the medicine list, and paid medicines will not be displayed.</li>
+<li>After selecting the drugs to be paid, click the “Confirm Drugs and Amount” button, and the total amount of the currently selected drugs and the payment on behalf of the drug will be displayed.</li>
+<li>Click Settlement to pop up an invoice confirmation window. Click the “Get Invoice Information” button to automatically generate a six-digit invoice number, and display the current patient information, the name of the drug paid and the amount receivable.</li>
+<li>Click the “Charge” button to complete the charge, update the payment status in the patient prescription list to “paid”, add a payment record to the payment list, and add an invoice record to the invoice table middle.</li>
+</ol>
+<h3 id="7-Dispensing-medicine-in-pharmacy"><a href="#7-Dispensing-medicine-in-pharmacy" class="headerlink" title="7. Dispensing medicine in pharmacy"></a>7. Dispensing medicine in pharmacy</h3><p><strong>a) Business analysis</strong></p>
+<ul>
+<li>The pharmacy administrator enters the patient’s medical record number, and queries all the drugs to be issued for the patient.</li>
+<li>Distribute all medicines.</li>
+</ul>
+<p><strong>b) Functional analysis</strong></p>
+<ol>
+<li>In the patient’s list of drugs to be issued, all drugs have been paid.</li>
+<li>One-click to select all medicines and distribute them all directly.</li>
+</ol>
+<br>
+
+
+
+<h2 id="System-Design"><a href="#System-Design" class="headerlink" title="System Design"></a>System Design</h2><h3 id="System-architecture-design"><a href="#System-architecture-design" class="headerlink" title="System architecture design"></a>System architecture design</h3><p>Use the Springboot framework, Mybatis as the persistence layer framework, and Thymeleaf as the template engine</p>
+<p>Spring boot can run independently in the form of a jar package. To run a Spring Boot project, you only need to run it through java -jar xx.jar. Springboot almost eliminates all configuration files. Compared with ordinary web development, Springboot has no web.xml, no need to configure servlet, and it also simplifies the configuration of Maven. When I create a new springboot project, I can manually select the functions and dependencies that I want to add. This saves a lot of the process of adding dependencies in Maven. In other words, springboot takes what you need from the beginning Once the dependencies are installed, you can run them directly after you get them. In addition, the embedded Tomcat is also faster and more convenient to start.</p>
+<p>Thymeleaf, as the template engine recommended by springboot, embeds static html into tag attributes, so that the browser can directly open the template file, which is convenient for front-end and back-end joint debugging. Thymeleaf tags are a major feature. When the backend does not pass values to the frontend, the browser ignores undefined tag attributes when interpreting html, so thymeleaf templates can run statically; when data is returned to the page, Thymeleaf tags Will dynamically replace the static content, so that the page is displayed dynamically. Thymeleaf uses tag attributes to define the template, without destroying the basic html document structure, so that you can directly open it in the browser to view the layout effect. The syntax of Thymeleaf is relatively simple and easy to understand, and the functions are relatively powerful. In short, one sentence is: the template is the prototype, and the front and back ends are separated.</p>
+<p>Use Thymeleaf grammar to mark up the HTML page on the front end. In the back end, you can use the controller to get the front-end data or assign values to the front-end data, and then perform operations (write/update the database…), thus realizing the separation and separation of the front and back ends. Interactive. In this way, you can omit the Dao layer and the Service layer in the original SSM framework, and interact with the front end directly in the controller.</p>
+<p>MyBatis’s encapsulation of jdbc makes data more secure and simplifies data access. You can use Mybatis to operate the database more conveniently. Write the sql statement directly in mapper.xml, and then map it to a mapper class to directly call sql. There is no need to create a BaseDao class on the Dao layer to control the database like the original jdbc. The connection and the preparation of sql statements. In this way, it not only greatly simplifies the complexity of interacting with the database, but also makes the entire structure clear (1 mapper corresponds to 1 function).</p>
+<img src="/images/HIS/2.png" alt="1" style="zoom:80%;" />
+
+<h3 id="Detailed-design"><a href="#Detailed-design" class="headerlink" title="Detailed design"></a>Detailed design</h3><p><strong>1) Login and logout</strong></p>
+<p>The user needs to enter the user name and password when logging in. After the LoginController obtains the user input from the front-end page, it calls the method in UserMapper, queries the database for the user name and password as the user object entered by the user, and returns it. In LoginController, if the returned user is not null, it means that the user input is correct, so you can log in and store the user’s information in the session. When the user logs out, he must log out of the session and return to the login page. The interceptor is triggered every time the user makes a page jump. If the user is not logged in, the interceptor intercepts all the redirect requests of the user and jumps to the login page.</p>
+<p><strong>2) Registration</strong></p>
+<p>RegisterController obtains the registration information entered by the patient from the registration page, and calls the method in RegisterMapper to insert a new registration information into the registration form.</p>
+<p><strong>3) Retire</strong></p>
+<p>The operator enters the patient’s medical record number for query, and TuiHaoController obtains the patient’s medical record number from the return number page and calls the method in TuiHaoMapper to find the patient whose medical record number is the medical record number in the registration form. After that, the data is transmitted to the front-end page through Thymeleaf. Use JS on the front end to determine whether the patient can withdraw the number. If so, TuiHaoController will call the method in TuiHaoMapper again to update the patient’s consultation status to “returned number”.</p>
+<p><strong>4) Doctor visits</strong></p>
+<p>KanZhenController calls the method in KanZhenMapper to query the undiagnosed patient list and the diagnosed patient list of the doctor in the current session, and use Thymeleaf to display it on the doctor page.</p>
+<p>After the doctor submits the consultation, KanZhenController calls the method in KanZhenMapper again to add a piece of medical record information to the patient’s medical record table.</p>
+<p><strong>5) Prescribe medication</strong></p>
+<p>When the doctor selects the beneficial party and clicks to issue, KaiYaoController calls the method in KaiYaoMapper to add the prescription details to the patient prescription list.</p>
+<p><strong>6) Charges</strong></p>
+<p>When the operator enters the medical record number to query the patient, PayController calls the method in PayMapper to find the patient based on the medical record number, and transmits the data to the front end. The patient selects the drug to be paid, and after clicking the charge, PayController calls the method in PayMapper again, writes the payment records into the payment schedule one by one, and adds the invoice record to the invoice table.</p>
+<p><strong>7) Dispensing medicine in pharmacy</strong></p>
+<p>Similarly, the operator inputs the patient’s medical record number, and FaYaoController calls the method in FaYaoMapper to find the patient’s list of medicines to be sent based on the medical record number, and transmits the data to the front end. One-click to select all medicines and distribute them directly. FaYaoController calls the method in FaYaoMapper again to update the status of the corresponding medicines to “drugs dispensed”.</p>
+<br>
+
+
+
+<h2 id="System-Implementation"><a href="#System-Implementation" class="headerlink" title="System Implementation"></a>System Implementation</h2><h3 id="1-Login"><a href="#1-Login" class="headerlink" title="1. Login"></a>1. Login</h3><p><img src="/images/HIS/3.png" alt="1"></p>
+<ul>
+<li>The user needs to enter the user name and password when logging in. After the LoginController obtains the user input from the front-end page, it calls the method in UserMapper, queries the database for the user name and password as the user object entered by the user, and returns it. In LoginController, if the returned user is not null, it means that the user input is correct, so you can log in and save the user’s information in the session</li>
+<li>When the user logs out, log out of the session and return to the login page</li>
+</ul>
+<h3 id="2-Registration-1"><a href="#2-Registration-1" class="headerlink" title="2. Registration"></a>2. Registration</h3><p><img src="/images/HIS/4.png" alt="1"></p>
+<ul>
+<li>Patients need to enter personal information such as name, ID number, gender, birthday, and home address when registering, and select the department, number, corresponding doctor, as well as the date of visit and the date of registration.</li>
+<li>If the patient misses the information, it will display: “Registration failed, the information is incomplete!”</li>
+<li>Calculate age based on the date of birth entered.</li>
+<li>Department, number, doctor, three-level linkage.</li>
+<li>Calculate the registered amount based on the number and the need for medical records.</li>
+</ul>
+<h3 id="3-Retire-1"><a href="#3-Retire-1" class="headerlink" title="3. Retire"></a>3. Retire</h3><p><img src="/images/HIS/5.png" alt="1"></p>
+<ul>
+<li>The operator enters the patient’s medical record number to query, and obtains the patient’s registration information: the back-end account controller obtains the medical record number entered by the front-end user, queries the registration information in the database, and then uses Thymeleaf to transmit the information to the front-end page .</li>
+<li>Judging whether the number can be withdrawn: Use JS to judge the value of the registered status, if it is “not diagnosed”, the number can be withdrawn, if it is “diagnosed” or “withdrawn”, the message “cannot return the number!”</li>
+</ul>
+<h3 id="4-Doctor-visits-1"><a href="#4-Doctor-visits-1" class="headerlink" title="4. Doctor visits"></a>4. Doctor visits</h3><p><img src="/images/HIS/6.png" alt="1"></p>
+<ul>
+<li>In the consultation controller, get the undiagnosed and diagnosed patient lists of the current doctor (you can get the name of the current doctor from the Session) from the database, and then addAttribute to the model in the controller (undiagnosed list and diagnosed) list), and then get the two lists on the front end, and use Thymeleaf to loop output to the two tables.</li>
+<li>In the list of undiagnosed and diagnosed patients, there is a check box at the end of each line. The doctor clicks the check box to confirm the start of the consultation, and then the current patient’s information (name + medical record number) will be displayed on the page . If you do not select a patient to start the consultation directly, it will prompt “Please select 1 patient!</li>
+<li>After the doctor finishes writing the diagnosis information, click the “Submit” button, the back-end consultation controller will obtain the diagnosis information and write it into the medical record form, and change the consultation status in the registration form to 1 (diagnosed).</li>
+</ul>
+<h3 id="5-Prescribe-medication-1"><a href="#5-Prescribe-medication-1" class="headerlink" title="5. Prescribe medication"></a>5. Prescribe medication</h3><p><img src="/images/HIS/7.png" alt="1"></p>
+<ul>
+<li>Doctors can prescribe medications based on existing templates, or create new prescriptions and delete prescriptions.</li>
+<li>Doctors can click on the “Show” button of each prescription to view the drug details in the prescription.</li>
+<li>Finally, the doctor chooses the prescription to be issued and adds it to the outpatient prescription first, and then clicks the “Issuing” button to complete the issuance of the prescription.</li>
+<li>After the issuance, all prescribed medicines need to be written into the patient prescription list in the database</li>
+</ul>
+<h3 id="6-Charges-1"><a href="#6-Charges-1" class="headerlink" title="6. Charges"></a>6. Charges</h3><p><img src="/images/HIS/8.png" alt="1"></p>
+<img src="/images/HIS/9.png" alt="1" style="zoom:67%;" />
+
+<ul>
+<li>The operator enters the patient’s medical record number, and can query the list of drugs paid on behalf of the patient. For the drug list, there is a check box at the end of each line. You can select all with one click and pay all the fees, or you can select only a part of them for payment.</li>
+<li>After selecting the drugs to be paid, click the “Confirm Drugs and Amount” button, and the total amount of the currently selected drugs and the payment will be displayed.</li>
+<li>Clicking on the settlement will pop up the invoice confirmation window, and clicking the “Get Invoice Information” button will automatically generate a six-digit invoice number, and display the current patient information, the name of the drug paid and the amount receivable.</li>
+<li>Click the “Charge” button to complete the charge, update the payment status in the patient prescription list to “paid”, add a payment record to the payment list, and add an invoice record to the invoice table .</li>
+</ul>
+<h3 id="7-Dispensing-medicine-in-pharmacy-1"><a href="#7-Dispensing-medicine-in-pharmacy-1" class="headerlink" title="7. Dispensing medicine in pharmacy"></a>7. Dispensing medicine in pharmacy</h3><p><img src="/images/HIS/10.png" alt="1"></p>
+<ul>
+<li>The pharmacy administrator enters the patient’s medical record number, and queries all the drugs to be issued for the patient.</li>
+<li>In the patient’s list of drugs to be distributed, all drugs have been paid.</li>
+<li>One-click to select all medicines and distribute them all directly.</li>
+<li>After the medicine is issued, the status of the medicine in the patient prescription list in the database is updated to “drug already issued”</li>
+</ul>
+<br>
+
+
+
+<h2 id="System-Testing"><a href="#System-Testing" class="headerlink" title="System Testing"></a>System Testing</h2><h3 id="1-Login-1"><a href="#1-Login-1" class="headerlink" title="1. Login"></a>1. Login</h3><p>login page: localhost:8080</p>
+<p><img src="/images/HIS/11.png" alt="1"></p>
+<p>When you visit the doctor page directly when you are not logged in, you will be forced to bounce back to the login page.</p>
+<p><img src="/images/HIS/12.png" alt="1"></p>
+<h3 id="2-Registration-2"><a href="#2-Registration-2" class="headerlink" title="2. Registration"></a>2. Registration</h3><p>Register Xu Qiang</p>
+<p><img src="/images/HIS/13.png" alt="1"></p>
+<p>According to different departments, there are different doctors</p>
+<img src="/images/HIS/14.png" alt="1" style="zoom:75%;" />
+
+<p>After filling in the registration information, click the “Confirm Registration Information” button, the age will be automatically calculated based on the date of birth, and the amount receivable will be calculated based on the number and whether the medical record is needed.</p>
+<p><img src="/images/HIS/15.png" alt="1"></p>
+<h3 id="3-Doctor-visits"><a href="#3-Doctor-visits" class="headerlink" title="3. Doctor visits"></a>3. Doctor visits</h3><p>Enter the page of Doctor Bianque (user name: bianque, password: bianque123). You can see that Xu Qiang, who has just registered, has appeared in the list of undiagnosed patients of Bian Que.</p>
+<p><img src="/images/HIS/16.png" alt="1"></p>
+<p>If a doctor wants to see a doctor, he needs to check a patient and click the “Start seeing” button.</p>
+<p>(1) If the doctor does not select a patient and directly clicks the “Start Seeing” button, a message will be displayed:</p>
+<p><img src="/images/HIS/17.png" alt="1"></p>
+<p>(2) After the doctor selects a patient and clicks the “Start Seeing” button, the patient’s name and medical record number will appear in the “Current Patient” text box.</p>
+<p><img src="/images/HIS/18.png" alt="1"></p>
+<p>Visit Xu Qiang</p>
+<p>(1) The doctor fills in the consultation information, here is all filled with “diarrhea”.<br>(2) The doctor clicks the “Submit” button to complete the submission.<br>(3) Xu Qiang will be transferred to the list of diagnosed patients.</p>
+<p><img src="/images/HIS/19.png" alt="1"></p>
+<p><img src="/images/HIS/20.png" alt="1"></p>
+<h3 id="4-Prescribe-medication"><a href="#4-Prescribe-medication" class="headerlink" title="4. Prescribe medication"></a>4. Prescribe medication</h3><p>Prescribe Xu Qiang</p>
+<p><img src="/images/HIS/21.png" alt="1"></p>
+<p>Click “Show” in the prescription template, and the drug details under the current template will be displayed in the template details.</p>
+<p><img src="/images/HIS/22.png" alt="1"></p>
+<p>Click the “use” button to add the prescription to the outpatient prescription.</p>
+<p><img src="/images/HIS/23.png" alt="1"></p>
+<p><strong>New prescriptions:</strong><br>(1) Click the “Add Party Button”<br>(2) Fill in the name of the prescription<br>(3) Choose medicines (no more than 5 kinds)</p>
+<p>Add 1 prescription, the name is: New Medicine No. 1</p>
+<p><img src="/images/HIS/24.png" alt="1"></p>
+<p>Choose medicine</p>
+<p><img src="/images/HIS/25.png" alt="1"></p>
+<p><img src="/images/HIS/26.png" alt="1"></p>
+<p>Choose the following three medicines: yam granules, baizhi granules, huanglian granules.</p>
+<p><img src="/images/HIS/27.png" alt="1"></p>
+<p>result:</p>
+<p><img src="/images/HIS/28.png" alt="1"></p>
+<p><strong>Delete prescriptions:</strong><br>I deleted the new prescription No. 1 that I just created.</p>
+<p><img src="/images/HIS/29.png" alt="1"></p>
+<p>result:</p>
+<p><img src="/images/HIS/30.png" alt="1"></p>
+<p><strong>Select the prescription and proceed to issue</strong></p>
+<p>Choose “Frequent Colds in Spring”</p>
+<p><img src="/images/HIS/31.png" alt="1"></p>
+<p>Click “Issue” in the outpatient prescription form, and the name of the template will be filled in the text box of “Confirmation of Issuing of Prescriptions” above.</p>
+<p><img src="/images/HIS/32.png" alt="1"></p>
+<p>Click the “Issue” button to complete the prescription issuance.</p>
+<p><img src="/images/HIS/33.png" alt="1"></p>
+<p>The four medicines in the prescription of “Frequent Influenza in Spring” are shown in the picture below:</p>
+<p><img src="/images/HIS/34.png" alt="1"></p>
+<h3 id="5-Charges"><a href="#5-Charges" class="headerlink" title="5. Charges"></a>5. Charges</h3><p>Enter Xu Qiang’s medical record number: 337336 on the charge page, and query Xu Qiang’s list of drugs paid on his behalf, and you can see that it is consistent with the drugs in 4 in the above figure.</p>
+<p><img src="/images/HIS/35.png" alt="1"></p>
+<p>You can pay all of the fees, or you can choose to pay a part of the fees. Here, you can choose two drugs, Danshen granules and phenolphthalein, to pay.</p>
+<p><img src="/images/HIS/36.png" alt="1"></p>
+<p>After selecting the drug, you need to click the “Confirm Drug and Amount Button”. After clicking, the name and total amount of the selected drug to be paid will be displayed</p>
+<p><img src="/images/HIS/37.png" alt="1"></p>
+<p>Click the “Settlement” button, and the invoice confirmation window will pop up. Click “Get Invoice Information” to display the current patient’s invoice information</p>
+<p><img src="/images/HIS/38.png" alt="1"></p>
+<p>Enter the actual amount received, and click “Show Change Amount” to display the change.</p>
+<p><img src="/images/HIS/39.png" alt="1"></p>
+<p>Re-check Xu Qiang’s paid drugs, you can see that there are only two drugs, because two drugs have just been paid</p>
+<p><img src="/images/HIS/40.png" alt="1"></p>
+<h3 id="6-Dispensing-medicine-in-pharmacy"><a href="#6-Dispensing-medicine-in-pharmacy" class="headerlink" title="6. Dispensing medicine in pharmacy"></a>6. Dispensing medicine in pharmacy</h3><p>Enter the drug delivery page of the pharmacy, click on the drug delivery of the pharmacy, enter Xu Qiang’s medical record number, search his list of paid drugs, which is the list of drugs to be issued, and you can see that they are the two drugs of Danshen granules and phenolphthalein that have just been paid. Select all medicines with one click, and click the “Dispensing” button. It displays “Successful drug delivery!”</p>
+<p><img src="/images/HIS/41.png" alt="1"></p>
+<p>Re-enter Xu Qiang’s medical record number and check again. No medicines were inquired this time, because the prescriptions had already been given to Xu Qiang, and Xu Qiang had no medicines to be dispatched (the medicines have been paid, but the medicines have not been distributed yet).</p>
+<p><img src="/images/HIS/42.png" alt="1"></p>
+<h3 id="7-Retire"><a href="#7-Retire" class="headerlink" title="7. Retire"></a>7. Retire</h3><p>Xia Ting went to return the account. Enter Xia Ting’s medical record number on the logout page to find out Xia Ting’s registration information. You can see that Xia Ting’s consultation status is not seen, so you can withdraw the number, select the registration record, and click the “return number” button to complete the return. No.</p>
+<p><img src="/images/HIS/43.png" alt="1"></p>
+<p>Consultation status: not seen</p>
+<p><img src="/images/HIS/44.png" alt="1"></p>
+<p>Retire successfully!</p>
+<p><img src="/images/HIS/45.png" alt="1"></p>
+<p>Enter Xia Ting’s medical record number again to query the registration information. At this time, Xia Ting’s medical status changed to “retired account.” Click the “return account” button again, and it will display “cannot return account twice!”</p>
+<p>Consultation status: number has been withdrawn</p>
+<p><img src="/images/HIS/46.png" alt="1"></p>
+<p>Cannot return the account number twice!</p>
+<p><img src="/images/HIS/47.png" alt="1"></p>
+<p>Enter the medical record number of the patient Xu Qiang who has just seen the consultation, and you can see that the status of the consultation is: seen. This is if you click the “Return Number” button again, it will display “I have seen the consultation and cannot withdraw the number! “</p>
+<p><img src="/images/HIS/48.png" alt="1"></p>
+<p><img src="/images/HIS/49.png" alt="1"></p>
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a target="_blank" rel="noopener" href="https://github.com/xsb1999/HIS_Web">GitHub</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+              <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+              <a href="/tags/Maven/" rel="tag"><i class="fa fa-tag"></i> Maven</a>
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+              <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+              <a href="/tags/Bootstrap/" rel="tag"><i class="fa fa-tag"></i> Bootstrap</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/19/RRT/" rel="next" title="「RRT」Three types of Rapid-exploration Random Tree">
+      「RRT」Three types of Rapid-exploration Random Tree <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relevant-Technologies"><span class="nav-number">2.</span> <span class="nav-text">Relevant Technologies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Theoretical-basis"><span class="nav-number">2.1.</span> <span class="nav-text">1. Theoretical basis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Project-development-method"><span class="nav-number">2.2.</span> <span class="nav-text">2. Project development method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Development-tools"><span class="nav-number">2.3.</span> <span class="nav-text">3. Development tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Development-Environment"><span class="nav-number">2.4.</span> <span class="nav-text">4. Development Environment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Analysis"><span class="nav-number">3.</span> <span class="nav-text">System Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-User-login"><span class="nav-number">3.1.</span> <span class="nav-text">1. User login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Registration"><span class="nav-number">3.2.</span> <span class="nav-text">2. Registration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Retire"><span class="nav-number">3.3.</span> <span class="nav-text">3. Retire</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Doctor-visits"><span class="nav-number">3.4.</span> <span class="nav-text">4. Doctor visits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Prescribe-medication"><span class="nav-number">3.5.</span> <span class="nav-text">5. Prescribe medication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Charges"><span class="nav-number">3.6.</span> <span class="nav-text">6. Charges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Dispensing-medicine-in-pharmacy"><span class="nav-number">3.7.</span> <span class="nav-text">7. Dispensing medicine in pharmacy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Design"><span class="nav-number">4.</span> <span class="nav-text">System Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#System-architecture-design"><span class="nav-number">4.1.</span> <span class="nav-text">System architecture design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detailed-design"><span class="nav-number">4.2.</span> <span class="nav-text">Detailed design</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Implementation"><span class="nav-number">5.</span> <span class="nav-text">System Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Login"><span class="nav-number">5.1.</span> <span class="nav-text">1. Login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Registration-1"><span class="nav-number">5.2.</span> <span class="nav-text">2. Registration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Retire-1"><span class="nav-number">5.3.</span> <span class="nav-text">3. Retire</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Doctor-visits-1"><span class="nav-number">5.4.</span> <span class="nav-text">4. Doctor visits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Prescribe-medication-1"><span class="nav-number">5.5.</span> <span class="nav-text">5. Prescribe medication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Charges-1"><span class="nav-number">5.6.</span> <span class="nav-text">6. Charges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Dispensing-medicine-in-pharmacy-1"><span class="nav-number">5.7.</span> <span class="nav-text">7. Dispensing medicine in pharmacy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System-Testing"><span class="nav-number">6.</span> <span class="nav-text">System Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Login-1"><span class="nav-number">6.1.</span> <span class="nav-text">1. Login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Registration-2"><span class="nav-number">6.2.</span> <span class="nav-text">2. Registration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Doctor-visits"><span class="nav-number">6.3.</span> <span class="nav-text">3. Doctor visits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Prescribe-medication"><span class="nav-number">6.4.</span> <span class="nav-text">4. Prescribe medication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Charges"><span class="nav-number">6.5.</span> <span class="nav-text">5. Charges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Dispensing-medicine-in-pharmacy"><span class="nav-number">6.6.</span> <span class="nav-text">6. Dispensing medicine in pharmacy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Retire"><span class="nav-number">6.7.</span> <span class="nav-text">7. Retire</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Link"><span class="nav-number">7.</span> <span class="nav-text">Link</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Andy Xu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Andy Xu</p>
+  <div class="site-description" itemprop="description">Light tomorrow with today</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsb1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsb1999" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/shibo_xu_99@163.com" title="E-Mail → shibo_xu_99@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="wechat:Xu Shibo" title="WeChat → wechat:Xu Shibo" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-child fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://taylorchyi.xyz/" title="https:&#x2F;&#x2F;taylorchyi.xyz&#x2F;" rel="noopener" target="_blank">Taylor Chyi</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+<br><br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4278298&auto=1&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">51 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+  <script id="ribbon" src="/js/src/canvas-ribbon.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

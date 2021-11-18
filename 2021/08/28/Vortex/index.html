@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.andy.fit","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IntroductionThe reconnection phenomenon of quantum vortex is one of the important research fields of topological fluid mechanics. Although reconnection is the main form of changing the vortex topolo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate">
+<meta property="og:url" content="http://blog.andy.fit/2021/08/28/Vortex/index.html">
+<meta property="og:site_name" content="Andy Xu&#39;s Blog">
+<meta property="og:description" content="IntroductionThe reconnection phenomenon of quantum vortex is one of the important research fields of topological fluid mechanics. Although reconnection is the main form of changing the vortex topolo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/2.gif">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/1.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/0.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/6.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/7.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/8.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/9.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/10.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/11.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/12.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/13.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/14.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/15.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/16.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/17.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/18.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/19.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/20.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/21.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/22.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/23.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/24.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/25.png">
+<meta property="og:image" content="http://blog.andy.fit/images/Vortex/26.png">
+<meta property="article:published_time" content="2021-08-28T06:26:57.000Z">
+<meta property="article:modified_time" content="2021-11-18T10:58:36.586Z">
+<meta property="article:author" content="Andy Xu">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="Computer Graphics">
+<meta property="article:tag" content="Quantum Vortex">
+<meta property="article:tag" content="MATLAB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.andy.fit/images/Vortex/2.gif">
+
+<link rel="canonical" href="http://blog.andy.fit/2021/08/28/Vortex/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate | Andy Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="Andy Xu's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Andy Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-curriculum-vitae">
+
+    <a href="https://xsb1999.gitee.io/xsb1999.gitee.io" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>Curriculum vitae</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">30</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.andy.fit/2021/08/28/Vortex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Andy Xu">
+      <meta itemprop="description" content="Light tomorrow with today">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Andy Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-28 14:26:57" itemprop="dateCreated datePublished" datetime="2021-08-28T14:26:57+08:00">2021-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-18 18:58:36" itemprop="dateModified" datetime="2021-11-18T18:58:36+08:00">2021-11-18</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>6.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img src="/images/Vortex/2.gif" alt="2" style="zoom:78%;" />
+
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The reconnection phenomenon of quantum vortex is one of the important research fields of topological fluid mechanics. Although reconnection is the main form of changing the vortex topology, the research on reconnection is a relatively new field. There is no method that is highly reliable and does not require a large amount of manual calibration to detect the position of reconnection in the vortex. For these reasons, we propose a new method that uses deep learning combined with the Gross-Pitaevskii equation (GPE) to detect the exact time and location of the reconnection.</p>
+<p>Quantum vortices are similar to bubbles in water. They can move, change shape, meet other vortices, combine, reconnect, and then separate into two new vortices. The purpose of this project is to find the precise time and location of all vortices which are reconnected.</p>
+<p>As shown in the figure below, there are two vortices in one space, and they intersect (reconnect) at three places. Our task is to identify the specific space-time coordinates of all these points.</p>
+<img src="/images/Vortex/1.png" alt="1" style="zoom:60%;" />
+
+
+<span id="more"></span>
+
+
+<h2 id="Research-Overview"><a href="#Research-Overview" class="headerlink" title="Research Overview"></a>Research Overview</h2><p><img src="/images/Vortex/0.png" alt="0"></p>
+<h4 id="S1-amp-S2-Reconnection-localization"><a href="#S1-amp-S2-Reconnection-localization" class="headerlink" title="S1 &amp; S2. Reconnection localization"></a>S1 &amp; S2. Reconnection localization</h4><p>For each data input, First, we’ll localize an area with all vortices, then try to use GNN to search for all reconnection areas at that moment.</p>
+<img src="/images/Vortex/6.png" alt="0" style="zoom:50%;" />
+
+<h4 id="S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis"><a href="#S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis" class="headerlink" title="S3. Area Tracing by Markov chain &amp; Survival Analysis"></a>S3. Area Tracing by Markov chain &amp; Survival Analysis</h4><p>After that, we will put all data of one configuration together. To connect search results with reconnections events, use Hidden Markov Chains to trace their path.</p>
+<img src="/images/Vortex/7.png" alt="0" style="zoom:50%;" />
+
+<h4 id="S4-Reconnection-Detection-by-CNN-amp-CG"><a href="#S4-Reconnection-Detection-by-CNN-amp-CG" class="headerlink" title="S4. Reconnection Detection by CNN &amp; CG"></a>S4. Reconnection Detection by CNN &amp; CG</h4><p>At last step, we have 2 plans. Plan A is to replicate the manul recognition with an Evaluation Function. Plan B will transfer 4-dimensional problem into a 2-dimensional problem and modify the existing CNN approach to detect reconnection.</p>
+<img src="/images/Vortex/8.png" alt="0" style="zoom:50%;" />
+
+<img src="/images/Vortex/9.png" alt="0" style="zoom:50%;" />
+
+
+
+<h2 id="Research-Detail"><a href="#Research-Detail" class="headerlink" title="Research Detail"></a>Research Detail</h2><h4 id="S1-amp-S2-Reconnection-localization-1"><a href="#S1-amp-S2-Reconnection-localization-1" class="headerlink" title="S1 &amp; S2. Reconnection localization"></a>S1 &amp; S2. Reconnection localization</h4><p>We need to mark the approximate location of the Areas’ center manually. To save the time we’ll spend on labeling, we propose to introduce semi-supervised learning. </p>
+<p>Tentatively, we will try GANs +GNN. Our current idea is to adopt a point cloud containing three-dimensional coordinate values and k attributes to construct a graph structure containing labelled and unlabeled nodes.</p>
+<img src="/images/Vortex/10.png" alt="0" style="zoom:60%;" />
+
+<p>As we believe that GANs is a promising method to improve our model’s performance, we only map part of the labeled nodes to the feature space to learn representation and we’ll use graph embedding to learn the latent distributed representation and then combine it with the original feature vector. This combination will be our input. The generator generates pseudo inputs while the discriminator aims to classify unlabeled data and distinguish between generated and real data.</p>
+<img src="/images/Vortex/11.png" alt="0" style="zoom:100%;" />
+
+<p>**Flow chart of GANs: ** </p>
+<img src="/images/Vortex/12.png" alt="0" style="zoom:60%;" />
+
+<p>Under this framework, we also noticed several details: </p>
+<p>First, inspired by a paper, we may divide the generator into two parts: the first part generates attributes of fake nodes, and the second generates links from fake nodes to existing nodes.</p>
+<img src="/images/Vortex/13.png" alt="0" style="zoom:80%;" />
+
+<p>Moreover, based on the current framework, we will learn more about CycleGans to transform input samples and restrict the generated structure from deviating too far. By adding these restrictions, we can also reflect transitivity and propose a means of regularizing structured data.</p>
+<img src="/images/Vortex/14.png" alt="0" style="zoom:75%;" />
+
+<h4 id="S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis-1"><a href="#S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis-1" class="headerlink" title="S3. Area Tracing by Markov chain &amp; Survival Analysis"></a>S3. Area Tracing by Markov chain &amp; Survival Analysis</h4><p>As shown in the picture, multiple reconnections are taking place at the same time. Each of these reconnections are constantly moving and deforming, respectively. To classify reconnection areas by reconnection events for further analysis, we must correlate the reconnections from various time steps into several paths. However, there is currently no reconnection tracing technology.</p>
+<p><img src="/images/Vortex/15.png" alt="15"></p>
+<p>Fortunately, the “Biot-Savart law” model can approximately predict the motion of the vortex curve. Then, implement error analysis on the “Biot-Savart”, one can give the possibility distribution of the path, which allows us to apply Hidden Markov Chains.</p>
+<img src="/images/Vortex/16.png" alt="15" style="zoom:30%;" />
+
+<br/>
+
+<h4 id="S4-Reconnection-Detection-by-CNN-amp-CG-1"><a href="#S4-Reconnection-Detection-by-CNN-amp-CG-1" class="headerlink" title="S4. Reconnection Detection by CNN &amp; CG"></a>S4. Reconnection Detection by CNN &amp; CG</h4><p>After the reconnection area tracing, we can get the evolution links of all reconnection events for further time series analysis. Basing on that, we’ll move on to get the accurate spatiotemporal coordinates of the reconnection.</p>
+<p>This picture shows an example: one can learn that the reconnection happens at a specific moment between “t” equals 20 to 24. To find that moment, we’ll carry out our final part, the reconnection detection.</p>
+<img src="/images/Vortex/17.png" alt="15" style="zoom:60%;" />
+
+<p>As the critical part of this project, we have prepared 2 Plans for this step. Plan A is based on computer graphics (CG), and PLAN B is based on CNN.</p>
+<h5 id="Reconnection-Detection-by-CG"><a href="#Reconnection-Detection-by-CG" class="headerlink" title="Reconnection Detection by CG"></a>Reconnection Detection by CG</h5><img src="/images/Vortex/18.png" alt="15" style="zoom:55%;" />
+
+<p>As shown in the picture, there are 5 states for a reconnection event. At the reconnection moment, the 4 branches will overlap and form an “X” shape. Therefore, by observing the overlap of them, one can determine whether the reconnection is happening.</p>
+<p>Basing on that, by introducing CG methods like DDA and Bresenham algorithm, we may draw two pairs of extension lines of the two parts of incoming vortices centerline, directing on the reconnection area. We are also planning to try the Genetic algorithm on it to determine those parameters more accurately.</p>
+<img src="/images/Vortex/19.png" alt="15" style="zoom:45%;" />
+
+<p>Briefly speaking, compared with DDA, Bresenham is faster because it only uses very cheap operations like integer addition, subtraction and bit shifting.</p>
+<img src="/images/Vortex/20.png" alt="15" style="zoom:45%;" />
+
+<img src="/images/Vortex/21.png" alt="15" style="zoom:45%;" />
+
+<p>According to the equations of these four straight lines, we intend to set a function to evaluate the overlap of two pairs of half-lines in each moment, for example, the function can be the product of the distance between two pairs of lines, which is shown in the picture as ∆r1∙∆r2.</p>
+<p>Before the reconnection, the two parts of the vortices will approach, reunite and reconnect to each other with the function’value monotonically decreasing; after that, two new vortex parts will be created and move towards different directions, where the function’value monotonically increases.</p>
+<p>Therefore, one can assume that reconnection occurs during the period when the evaluation function tends to fall into a sufficiently small value, such as the C-E interval in this figure.</p>
+<img src="/images/Vortex/22.png" alt="15" style="zoom:45%;" />
+
+<p>For example, when T equals 20, the two pairs of lines are not fully overlapped. By t equals 22, they are apparent overlapping, Finally, when T equals 24, the overlapping degree decrease. In this case, the reconnection may occur around Time 22.</p>
+<img src="/images/Vortex/23.png" alt="15" style="zoom:55%;" />
+
+<p>Plan A has two advantages. Firstly, it does not require the cost of supervised learning, like, a large amount of data annotation or computing power; Secondly, it is logically transparent while ANN is opaque, contributing to physical and fluid mechanics explanations.</p>
+<p>However, Plan A also has limitations. It requires high accuracy and tests on different kinds of evaluation functions.</p>
+<h5 id="Reconnection-Detection-by-CNN"><a href="#Reconnection-Detection-by-CNN" class="headerlink" title="Reconnection Detection by CNN"></a>Reconnection Detection by CNN</h5><p>On the other hand, Plan B is a method combining existing deep learning technology. The main idea, is to transform the recognition task from the 3D evolutionary process into a 2D still image. This method does not rely on high precision in CG method.</p>
+<img src="/images/Vortex/24.png" alt="15" style="zoom:45%;" />
+
+<p>Firstly, as indicated by the grey dots, the saddle points of the 3D density field will help draw two orthogonal cross-sections, which will be the input to a CNN network. The network can detect the number of vortices in the cross-sections.</p>
+<img src="/images/Vortex/25.png" alt="15" style="zoom:45%;" />
+
+<p>For example, if the reconnection occurs between T=20 and T=24, the CNN will detect a vortex number change in both sections between two moments, leading to the reconnection’s spatiotemporal coordinates.</p>
+<img src="/images/Vortex/26.png" alt="15" style="zoom:45%;" />
+
+<p>Plan B also has disadvantages. The training of this CNN requires a large amount of manually labelled data and a lot of time. To solve this problem, we may consider applying the transfer learning method. Using a pre-trained model combined with a small amount of our labelled data for fine-tuning, one can train the model with less effort. We believe that such training will guarantee the accuracy of the vortex count detection model.</p>
+<p>The CNN and the data mentioned in our pre-training model comes from a paper published this year by a Japanese research group.</p>
+<br>
+
+<p>After the 4-step above, we still have many aspects of research to dig into, and we are looking forward to exploring further in the future.</p>
+<br>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+              <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+              <a href="/tags/Computer-Graphics/" rel="tag"><i class="fa fa-tag"></i> Computer Graphics</a>
+              <a href="/tags/Quantum-Vortex/" rel="tag"><i class="fa fa-tag"></i> Quantum Vortex</a>
+              <a href="/tags/MATLAB/" rel="tag"><i class="fa fa-tag"></i> MATLAB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/23/NPMS/" rel="prev" title="「NPMS」Neusoft profit management system">
+      <i class="fa fa-chevron-left"></i> 「NPMS」Neusoft profit management system
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Overview"><span class="nav-number">2.</span> <span class="nav-text">Research Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#S1-amp-S2-Reconnection-localization"><span class="nav-number">2.0.1.</span> <span class="nav-text">S1 &amp; S2. Reconnection localization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis"><span class="nav-number">2.0.2.</span> <span class="nav-text">S3. Area Tracing by Markov chain &amp; Survival Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S4-Reconnection-Detection-by-CNN-amp-CG"><span class="nav-number">2.0.3.</span> <span class="nav-text">S4. Reconnection Detection by CNN &amp; CG</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Detail"><span class="nav-number">3.</span> <span class="nav-text">Research Detail</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#S1-amp-S2-Reconnection-localization-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">S1 &amp; S2. Reconnection localization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S3-Area-Tracing-by-Markov-chain-amp-Survival-Analysis-1"><span class="nav-number">3.0.2.</span> <span class="nav-text">S3. Area Tracing by Markov chain &amp; Survival Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S4-Reconnection-Detection-by-CNN-amp-CG-1"><span class="nav-number">3.0.3.</span> <span class="nav-text">S4. Reconnection Detection by CNN &amp; CG</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Reconnection-Detection-by-CG"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">Reconnection Detection by CG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reconnection-Detection-by-CNN"><span class="nav-number">3.0.3.2.</span> <span class="nav-text">Reconnection Detection by CNN</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Andy Xu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Andy Xu</p>
+  <div class="site-description" itemprop="description">Light tomorrow with today</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsb1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsb1999" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/shibo_xu_99@163.com" title="E-Mail → shibo_xu_99@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194/" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;%E4%B8%96%E5%8D%9A-%E5%BE%90-a7a269194&#x2F;" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="wechat:Xu Shibo" title="WeChat → wechat:Xu Shibo" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-child fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://taylorchyi.xyz/" title="https:&#x2F;&#x2F;taylorchyi.xyz&#x2F;" rel="noopener" target="_blank">Taylor Chyi</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+<br><br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4278298&auto=1&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">51 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+  <script id="ribbon" src="/js/src/canvas-ribbon.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
