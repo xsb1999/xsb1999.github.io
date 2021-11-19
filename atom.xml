@@ -65,8 +65,6 @@
     
     
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
-    
     <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
     
     <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
@@ -86,6 +84,8 @@
     <category term="Docker" scheme="http://blog.andy.fit/tags/Docker/"/>
     
     <category term="Redis" scheme="http://blog.andy.fit/tags/Redis/"/>
+    
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
     
   </entry>
   
@@ -193,6 +193,8 @@
     
     
     
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    
     <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
     
     <category term="JSF" scheme="http://blog.andy.fit/tags/JSF/"/>
@@ -202,8 +204,6 @@
     <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
     
     <category term="Apache Derby" scheme="http://blog.andy.fit/tags/Apache-Derby/"/>
-    
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
     
   </entry>
   
@@ -262,14 +262,6 @@
     
     
     
-    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
-    
-    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
-    
-    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
-    
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
-    
     <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
     
     <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
@@ -277,6 +269,14 @@
     <category term="MyBatis" scheme="http://blog.andy.fit/tags/MyBatis/"/>
     
     <category term="MySQL" scheme="http://blog.andy.fit/tags/MySQL/"/>
+    
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    
+    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
+    
+    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
+    
+    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
     
     <category term="Bootstrap" scheme="http://blog.andy.fit/tags/Bootstrap/"/>
     
