@@ -65,6 +65,8 @@
     
     
     
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    
     <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
     
     <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
@@ -85,8 +87,6 @@
     
     <category term="Redis" scheme="http://blog.andy.fit/tags/Redis/"/>
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
-    
   </entry>
   
   <entry>
@@ -105,17 +105,17 @@
     
     
     
-    <category term="Knowledge Graph" scheme="http://blog.andy.fit/tags/Knowledge-Graph/"/>
-    
-    <category term="Neo4j" scheme="http://blog.andy.fit/tags/Neo4j/"/>
-    
     <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
+    
+    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
     
     <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
     
     <category term="Deep Learning" scheme="http://blog.andy.fit/tags/Deep-Learning/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    <category term="Knowledge Graph" scheme="http://blog.andy.fit/tags/Knowledge-Graph/"/>
+    
+    <category term="Neo4j" scheme="http://blog.andy.fit/tags/Neo4j/"/>
     
   </entry>
   
@@ -137,9 +137,9 @@
     
     <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
     
-    <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
-    
     <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    
+    <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
     
     <category term="PSO" scheme="http://blog.andy.fit/tags/PSO/"/>
     
@@ -170,9 +170,9 @@
     
     <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
-    
     <category term="Swarm intelligence" scheme="http://blog.andy.fit/tags/Swarm-intelligence/"/>
+    
+    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
     
   </entry>
   
@@ -193,8 +193,6 @@
     
     
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
-    
     <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
     
     <category term="JSF" scheme="http://blog.andy.fit/tags/JSF/"/>
@@ -204,6 +202,8 @@
     <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
     
     <category term="Apache Derby" scheme="http://blog.andy.fit/tags/Apache-Derby/"/>
+    
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
     
   </entry>
   
@@ -262,6 +262,14 @@
     
     
     
+    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
+    
+    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
+    
+    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
+    
+    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    
     <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
     
     <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
@@ -269,14 +277,6 @@
     <category term="MyBatis" scheme="http://blog.andy.fit/tags/MyBatis/"/>
     
     <category term="MySQL" scheme="http://blog.andy.fit/tags/MySQL/"/>
-    
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
-    
-    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
-    
-    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
-    
-    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
     
     <category term="Bootstrap" scheme="http://blog.andy.fit/tags/Bootstrap/"/>
     
