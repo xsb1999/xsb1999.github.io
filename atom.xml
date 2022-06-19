@@ -3,11 +3,11 @@
   <title>Andy Xu&#39;s Blog</title>
   
   
-  <link href="http://blog.andy.fit/atom.xml" rel="self"/>
+  <link href="http://blog.shiboxu.top/atom.xml" rel="self"/>
   
-  <link href="http://blog.andy.fit/"/>
-  <updated>2021-11-19T05:13:38.095Z</updated>
-  <id>http://blog.andy.fit/</id>
+  <link href="http://blog.shiboxu.top/"/>
+  <updated>2022-06-19T17:35:05.442Z</updated>
+  <id>http://blog.shiboxu.top/</id>
   
   <author>
     <name>Andy Xu</name>
@@ -17,9 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>「EmotionalChatbot」 Chatbot With Emotional Context</title>
+    <link href="http://blog.shiboxu.top/2022/06/14/Chatbot/"/>
+    <id>http://blog.shiboxu.top/2022/06/14/Chatbot/</id>
+    <published>2022-06-14T02:14:57.000Z</published>
+    <updated>2022-06-19T17:35:05.442Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/Chatbot/1.png" alt="1"></p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>At present, chatbots have two main drawbacks. One is the lack of distinct personality, that is, different chatbots give basically the same response to a user’s same input sentence, which lacks the uniqueness of each chatbot. The other drawback is the poor emotional retention ability of chatbots, that is, they do not take into account the emotional context, which makes the chatbot’s mood change dramatically in an instant during the conversation, lacking realism. Therefore, it is of great significance to research, design and implement chatbots with multi-personality, good ability of maintaining emotions and possessing emotional context.</p><p>In this project, I designed and implemented 5 chatbots with different personalities (<em>Angry, Sad, Happy, Neutral, Frustrated</em>) and strong emotional retention ability. I also effectively improved the ability of these chatbots to maintain emotions, reducing the probability of chatbots’ mood changes, making their conversations with people more realistic and vivid.</p><span id="more"></span><h2 id="A-Small-Demo"><a href="#A-Small-Demo" class="headerlink" title="A Small Demo"></a>A Small Demo</h2><h3 id="1-Choose-a-chatbot"><a href="#1-Choose-a-chatbot" class="headerlink" title="1. Choose a chatbot"></a>1. Choose a chatbot</h3><p>Let’s choose <strong>Susan</strong>, whose personality is <em><strong>Sad</strong></em>.</p><p><img src="/images/Chatbot/3.png" alt="1"></p><h3 id="2-Chat-with-it"><a href="#2-Chat-with-it" class="headerlink" title="2. Chat with it"></a>2. Chat with it</h3><p>First, I say <code>&quot;i am so happy&quot;</code>, my emotion is happy, but Susan responds with sadness, with the sentence <code>&quot;i am not&quot;</code>. The reason why the chatbot’s emotion is sad is that Susan’s personality is sad, so that she has the ability to maintain it’s personality, the same as other chatbots.</p><p><img src="/images/Chatbot/4.png" alt="1"></p><p>Then, I say <code>&quot;i am excited&quot;</code>, my emotion is still happy. This time, Susan responds with happiness, with the sentence <code>&quot;yeah yeah yeah yeah&quot;</code>. This is like talking with a real person. When I keep saying happy words to a person, I will change its mood. The accumulation of emotions causes changes. When I repeatedly said happy words to the chatbot, happy emotions built up, causing the chatbot’s mood to change from sad to happy.</p><p><img src="/images/Chatbot/5.png" alt="1"></p><p>After that, I say <code>&quot;it&#39;s good&quot;</code> and <code>&quot;it&#39;s wonderful&quot;</code>, which are both happy sentences. The chatbot’s emotion keeps to be happy with no changes.</p><p><img src="/images/Chatbot/6.png" alt="1"></p><p><img src="/images/Chatbot/7.png" alt="1"></p><p>Then, I say <code>&quot;i feel worse&quot;</code> which is a sad sentence, and my mood is sad. The chatbot’s mood remains happy, instead of turning into sadness. This is because the chatbot has such a large accumulation of happy emotions that only one sad sentence is not enough to turn its mood directly into sadness. This is the emotional retention ability of chatbots.</p><p><img src="/images/Chatbot/8.png" alt="1"></p><p>Finally, I say <code>&quot;hello sir&quot;</code>, a sentence with neutral emotion, and the chatbot responds with sadness, with the sentence <code>&quot;i do not want to talk anymore&quot;</code>. That is because I designed a emotional recovery mechanism for chatbots. After a certain number of rounds of conversation, the chatbot’s emotions moved toward its personality. It is worth noting that this movement of emotion does not directly turn emotion into personality, but gradually move closer to personality.</p><p><img src="/images/Chatbot/9.png" alt="1"></p><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Chatbots are booming and have entered people’s lives. Chatbots can be used as NPC in games and can also be used for Chit-chat to accompany people.</p><img src="/images/Chatbot/16.png" alt="1" style="zoom:63%;" /><p><strong>Current chatbots have two drawbacks</strong></p><ul><li>Not having unique personalities<ul><li>All brands of chatbots gave roughly the same response to the same user input.</li></ul></li><li>Poor emotional retention ability<ul><li>Chatbots’ mood can change instantaneously (<em>shown in the figure below</em>).</li></ul></li></ul><img src="/images/Chatbot/17.png" alt="1" style="zoom:75%;" /><img src="/images/Chatbot/18.png" alt="1" style="zoom:75%;" /><h2 id="Overall-Project-Structure"><a href="#Overall-Project-Structure" class="headerlink" title="Overall Project Structure"></a>Overall Project Structure</h2><p>The project contains 3 core functional modules</p><ul><li>Emotion Recognition Module</li><li>Emotion Response Module</li><li>Dialogue Generation Module</li></ul><p><img src="/images/Chatbot/10.png" alt="1"></p><h2 id="Emotion-Recognition-Module"><a href="#Emotion-Recognition-Module" class="headerlink" title="Emotion Recognition Module"></a>Emotion Recognition Module</h2><ul><li><strong>Input</strong>: User input sentence</li><li><strong>Output</strong>: User emotion</li></ul><img src="/images/Chatbot/11.png" alt="1" style="zoom:60%;" /><br><ul><li><strong>Dataset</strong><ul><li><em><strong><a href="https://sail.usc.edu/iemocap/">IEMOCAP</a></strong></em></li><li>151 dialogues, 7433 sentences</li></ul></li></ul><img src="/images/Chatbot/12.png" alt="1" style="zoom:66%;" /><ul><li><strong>Data preprocessing stage</strong><ul><li>Merge data from the Excited class into the Happy class.</li><li>Extract dialogue text and corresponding emotion labels from multiple txt files.</li><li>Save the data to a pkl file.</li></ul></li></ul><ul><li><strong>Vocabulary construction stage</strong><ul><li>Extract all words from the conversation dataset.</li><li>Add four additional words, namely, <code>&lt;SOS&gt;, &lt;EOS&gt;, &lt;UNK&gt;, &lt;PAD&gt;</code>.</li><li>Map each word to a unique numeric id, and saved as word2id and id2word.</li><li>With a total of 3125 words in the final vocabulary.</li></ul></li></ul><ul><li><p><strong>Modeling stage</strong></p><ul><li>Use Tensorflow’s Keras framework.</li><li>Use double - layer two-way LSTM (shown in the figure below).</li></ul>  <img src="/images/Chatbot/13.png" alt="1" style="zoom:66%;" />  <ul><li>Model training</li></ul>  <img src="/images/Chatbot/19.png" alt="1" style="zoom:66%;" />  </li><li><p><strong>Model evaluation</strong></p><ul><li>training set</li></ul>  <img src="/images/Chatbot/20.png" alt="1" style="zoom:70%;" /><ul><li>testing set</li></ul>  <img src="/images/Chatbot/21.png" alt="1" style="zoom:70%;" /></li></ul><ul><li><strong>Functional test</strong></li></ul><img src="/images/Chatbot/14.png" alt="1" style="zoom:66%;" /><h2 id="Emotion-Response-Module"><a href="#Emotion-Response-Module" class="headerlink" title="Emotion Response Module"></a>Emotion Response Module</h2><ul><li><strong>Input</strong>: User emotion</li><li><strong>Output</strong>: Chatbot response emotion</li></ul><img src="/images/Chatbot/15.png" alt="1" style="zoom:60%;" /><br><ul><li><p><strong>Emotional models of chatbots</strong></p><ul><li>An emotion vector E is defined to represent the emotion of chatbot.</li><li>e1, e2, e3, e4 and e5 correspond to angry, sad, happy, neutral and frustrated respectively.</li></ul>  <img src="/images/Chatbot/22.png" alt="1" style="zoom:60%;" /><ul><li>An emotional sensitivity vector ES was defined to represent five chatbots with different personalities.</li><li>S1, S2, S3, S4, and S5 correspond to angry, sad, happy, neutral, and frustrated respectively.</li></ul>  <img src="/images/Chatbot/23.png" alt="1" style="zoom:60%;" /><ul><li>Mapping between charters and emotional sensitivity vectors of chatbot.</li></ul>  <img src="/images/Chatbot/24.png" alt="1" style="zoom:57%;" />  <br></li><li><p><strong>Emotional response algorithm for chatbot</strong></p><ul><li><strong>Accumulation of emotion</strong><ul><li>During a chat, the chatbot accumulates emotions and “remembers” historical conversations.</li></ul></li><li><strong>Emotional recovery</strong><ul><li>After every 5 rounds of conversation, the chatbot’s emotion returned in the direction of its personality.</li></ul></li><li><strong>Flow chat of the algorithm</strong></li></ul>  <img src="/images/Chatbot/25.png" alt="1" style="zoom:66%;" /></li></ul><h2 id="Dialogue-Generation-Module"><a href="#Dialogue-Generation-Module" class="headerlink" title="Dialogue Generation Module"></a>Dialogue Generation Module</h2><ul><li><strong>Input</strong>: Chatbot response emotion &amp; User input sentence</li><li><strong>Output</strong>: Chatbot response sentence</li></ul><img src="/images/Chatbot/26.png" alt="1" style="zoom:58%;" /><br><ul><li><p><strong>Modeling stage</strong></p><ul><li>Use Tensorflow’s Keras framework.</li><li>Use Seq2Seq model.</li><li>Use 3-layer LSTM for the encoder (shown in the figure below).</li></ul>  <img src="/images/Chatbot/27.png" alt="1" style="zoom:70%;" /><ul><li><p>Use 3-layer LSTM for the decoder (shown in the figure below).</p><ul><li><strong>Add Emotional attention mechanism</strong></li><li><em><strong>Concatenate the original input vector of the decoder with the emotion vector as the final input of the decoder.</strong></em></li></ul>  <img src="/images/Chatbot/28.png" alt="1" style="zoom:70%;" /></li><li><p>Model training</p></li></ul>  <img src="/images/Chatbot/29.png" alt="1" style="zoom:66%;" /></li><li><p><strong>Functional test</strong></p>  <img src="/images/Chatbot/30.png" alt="1" style="zoom:63%;" /></li></ul><h2 id="Web-Application-Development"><a href="#Web-Application-Development" class="headerlink" title="Web Application Development"></a>Web Application Development</h2><p>The system was written in Python, the Flask framework was used for service deployment, the pre-trained Tensorflow-Keras model files were used as core function modules, and the front-end used HTML, JavaScript, CSS technology.</p><p>The sequence diagram of chat function is shown in the figure below.</p><img src="/images/Chatbot/31.png" alt="1" style="zoom:68%;" /><p>The chat function flow chart of the system is shown in the figure below.</p><img src="/images/Chatbot/32.png" alt="1" style="zoom:40%;" /><ul><li><p><strong>Page display</strong></p><ul><li>Chatbot selection page</li></ul><p>  <img src="/images/Chatbot/1.png" alt="1"></p><ul><li>Chat page</li></ul><p>  <img src="/images/Chatbot/2.png" alt="1"></p><ul><li>The chatbot generates response content</li></ul><p>  <img src="/images/Chatbot/33.png" alt="1"></p></li></ul><h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a href="https://github.com/xsb1999/Chatbots-With-Emotional-Context">GitHub</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/Chatbot/1.png&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;At present, chatbots have two main drawbacks. One is the lack of distinct personality, that is, different chatbots give basically the same response to a user’s same input sentence, which lacks the uniqueness of each chatbot. The other drawback is the poor emotional retention ability of chatbots, that is, they do not take into account the emotional context, which makes the chatbot’s mood change dramatically in an instant during the conversation, lacking realism. Therefore, it is of great significance to research, design and implement chatbots with multi-personality, good ability of maintaining emotions and possessing emotional context.&lt;/p&gt;
+&lt;p&gt;In this project, I designed and implemented 5 chatbots with different personalities (&lt;em&gt;Angry, Sad, Happy, Neutral, Frustrated&lt;/em&gt;) and strong emotional retention ability. I also effectively improved the ability of these chatbots to maintain emotions, reducing the probability of chatbots’ mood changes, making their conversations with people more realistic and vivid.&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Natural Language Processing" scheme="http://blog.shiboxu.top/tags/Natural-Language-Processing/"/>
+    
+    <category term="Deep Learning" scheme="http://blog.shiboxu.top/tags/Deep-Learning/"/>
+    
+    <category term="Machine Learning" scheme="http://blog.shiboxu.top/tags/Machine-Learning/"/>
+    
+    <category term="Algorithm" scheme="http://blog.shiboxu.top/tags/Algorithm/"/>
+    
+    <category term="Flask" scheme="http://blog.shiboxu.top/tags/Flask/"/>
+    
+    <category term="Python" scheme="http://blog.shiboxu.top/tags/Python/"/>
+    
+    <category term="TensorFlow" scheme="http://blog.shiboxu.top/tags/TensorFlow/"/>
+    
+    <category term="Keras" scheme="http://blog.shiboxu.top/tags/Keras/"/>
+    
+  </entry>
+  
+  <entry>
     <title>「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate</title>
-    <link href="http://blog.andy.fit/2021/08/28/Vortex/"/>
-    <id>http://blog.andy.fit/2021/08/28/Vortex/</id>
+    <link href="http://blog.shiboxu.top/2021/08/28/Vortex/"/>
+    <id>http://blog.shiboxu.top/2021/08/28/Vortex/</id>
     <published>2021-08-28T06:26:57.000Z</published>
     <updated>2021-11-19T05:13:38.095Z</updated>
     
@@ -36,22 +71,22 @@
     
     
     
-    <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
+    <category term="Deep Learning" scheme="http://blog.shiboxu.top/tags/Deep-Learning/"/>
     
-    <category term="Deep Learning" scheme="http://blog.andy.fit/tags/Deep-Learning/"/>
+    <category term="Machine Learning" scheme="http://blog.shiboxu.top/tags/Machine-Learning/"/>
     
-    <category term="Computer Graphics" scheme="http://blog.andy.fit/tags/Computer-Graphics/"/>
+    <category term="Computer Graphics" scheme="http://blog.shiboxu.top/tags/Computer-Graphics/"/>
     
-    <category term="Quantum Vortex" scheme="http://blog.andy.fit/tags/Quantum-Vortex/"/>
+    <category term="Quantum Vortex" scheme="http://blog.shiboxu.top/tags/Quantum-Vortex/"/>
     
-    <category term="MATLAB" scheme="http://blog.andy.fit/tags/MATLAB/"/>
+    <category term="MATLAB" scheme="http://blog.shiboxu.top/tags/MATLAB/"/>
     
   </entry>
   
   <entry>
     <title>「NPMS」Neusoft profit management system</title>
-    <link href="http://blog.andy.fit/2021/07/23/NPMS/"/>
-    <id>http://blog.andy.fit/2021/07/23/NPMS/</id>
+    <link href="http://blog.shiboxu.top/2021/07/23/NPMS/"/>
+    <id>http://blog.shiboxu.top/2021/07/23/NPMS/</id>
     <published>2021-07-23T10:06:37.000Z</published>
     <updated>2021-11-18T09:34:03.185Z</updated>
     
@@ -65,38 +100,38 @@
     
     
     
-    <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
+    <category term="Java" scheme="http://blog.shiboxu.top/tags/Java/"/>
     
-    <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
+    <category term="Spring Boot" scheme="http://blog.shiboxu.top/tags/Spring-Boot/"/>
     
-    <category term="Spring Cloud" scheme="http://blog.andy.fit/tags/Spring-Cloud/"/>
+    <category term="Spring Cloud" scheme="http://blog.shiboxu.top/tags/Spring-Cloud/"/>
     
-    <category term="Spring Security" scheme="http://blog.andy.fit/tags/Spring-Security/"/>
+    <category term="Spring Security" scheme="http://blog.shiboxu.top/tags/Spring-Security/"/>
     
-    <category term="MyBatis" scheme="http://blog.andy.fit/tags/MyBatis/"/>
+    <category term="MyBatis" scheme="http://blog.shiboxu.top/tags/MyBatis/"/>
     
-    <category term="MySQL" scheme="http://blog.andy.fit/tags/MySQL/"/>
+    <category term="MySQL" scheme="http://blog.shiboxu.top/tags/MySQL/"/>
     
-    <category term="Linux" scheme="http://blog.andy.fit/tags/Linux/"/>
+    <category term="Linux" scheme="http://blog.shiboxu.top/tags/Linux/"/>
     
-    <category term="Nginx" scheme="http://blog.andy.fit/tags/Nginx/"/>
+    <category term="Nginx" scheme="http://blog.shiboxu.top/tags/Nginx/"/>
     
-    <category term="Docker" scheme="http://blog.andy.fit/tags/Docker/"/>
+    <category term="Docker" scheme="http://blog.shiboxu.top/tags/Docker/"/>
     
-    <category term="Redis" scheme="http://blog.andy.fit/tags/Redis/"/>
+    <category term="Redis" scheme="http://blog.shiboxu.top/tags/Redis/"/>
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    <category term="Maven" scheme="http://blog.shiboxu.top/tags/Maven/"/>
     
   </entry>
   
   <entry>
     <title>「MQAS」Medical QA System Based On Knowledge Graph</title>
-    <link href="http://blog.andy.fit/2021/05/08/KG_QA/"/>
-    <id>http://blog.andy.fit/2021/05/08/KG_QA/</id>
+    <link href="http://blog.shiboxu.top/2021/05/08/KG_QA/"/>
+    <id>http://blog.shiboxu.top/2021/05/08/KG_QA/</id>
     <published>2021-05-08T12:27:56.000Z</published>
-    <updated>2021-11-18T10:59:15.280Z</updated>
+    <updated>2022-06-18T19:02:07.990Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/QA_KG/1.png" alt="1"></p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>At present, the intelligentization of medical diagnosis in our country needs to be improved. Due to the lack of a convenient and accurate channel for consultation, many patients lack a relatively accurate understanding of their condition. This project is based on knowledge graphs, natural language processing and other related technologies to realize knowledge-driven medical intelligence: preliminary diagnosis of the patient’s text and voice input symptom description, combined with the patient’s past medical history to provide diagnosis-oriented auxiliary decision-making and knowledge services. It realizes an intelligent and relatively accurate channel for patients’ consultation and consultation anytime and anywhere, and reduces the burden of offline manual diagnosis by doctors.</p><span id="more"></span><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="Research-task"><a href="#Research-task" class="headerlink" title="Research task"></a>Research task</h2><h3 id="Flow-chart"><a href="#Flow-chart" class="headerlink" title="Flow chart"></a>Flow chart</h3><img src="/images/QA_KG/2.png" alt="1" style="zoom:36%;" /><p>First, we crawled on the Internet, used vertical websites as data sources, and built a disease-centric medical knowledge map with an entity scale of 30,000 and an entity relationship of 200,000. This project is business-driven to build a medical knowledge graph. The knowledge schema design is generated based on the collected structured data, and the web page structured data is analyzed by xpath. We used the neo4j graph database as storage, and completed the knowledge question and answer based on the character matching of the question, and finally used the cypher query sentence as the question and answer search sql to support the question and answer service.</p><p>At the current stage, this question and answer system supports 15 different types of questions, including: disease symptoms, known symptoms to find possible diseases, causes, complications, foods not to eat, foods to eat, what medicines to take, what checks to be done, preventive measures, Treatment methods and cycles, etc.</p><p>At present, we are trying to add deep learning and natural language processing related content, so as to get rid of the use of keyword matching, because keyword matching has some shortcomings: 1. The types of questions are limited (the user may use a strange questioning method, so Avoid the keywords that we have set in advance: for example, the question of what to eat); 2. The answer is relatively rigid (about the cause of the disease, prevention, etc., the actual return is a large paragraph of text, in fact, the concept of event extraction can be introduced here , And further structure the reasons). So we are currently trying to use NLP to directly identify the entities, relationships, and attributes in the user input questions, and then use the knowledge graph ontology layer to match the results.</p><p>In addition, we are also trying to add voice functions, using some public voice recognition interfaces (free interfaces provided by HKUST IFLYTEK or Baidu AI or Tencent Cloud for developers) to achieve speech recognition and synthesis.</p>]]></content>
+    <content type="html"><![CDATA[<p><img src="/images/QA_KG/1.png" alt="1"></p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>At present, the intelligentization of medical diagnosis in our country needs to be improved. Due to the lack of a convenient and accurate channel for consultation, many patients lack a relatively accurate understanding of their condition. This project is based on knowledge graphs, natural language processing and other related technologies to realize knowledge-driven medical intelligence: preliminary diagnosis of the patient’s text and voice input symptom description, combined with the patient’s past medical history to provide diagnosis-oriented auxiliary decision-making and knowledge services. It realizes an intelligent and relatively accurate channel for patients’ consultation and consultation anytime and anywhere, and reduces the burden of offline manual diagnosis by doctors.</p><span id="more"></span><h2 id="Research-task"><a href="#Research-task" class="headerlink" title="Research task"></a>Research task</h2><h3 id="Flow-chart"><a href="#Flow-chart" class="headerlink" title="Flow chart"></a>Flow chart</h3><img src="/images/QA_KG/2.png" alt="1" style="zoom:36%;" /><p>First, we crawled on the Internet, used vertical websites as data sources, and built a disease-centric medical knowledge map with an entity scale of 30,000 and an entity relationship of 200,000. This project is business-driven to build a medical knowledge graph. The knowledge schema design is generated based on the collected structured data, and the web page structured data is analyzed by xpath. We used the neo4j graph database as storage, and completed the knowledge question and answer based on the character matching of the question, and finally used the cypher query sentence as the question and answer search sql to support the question and answer service.</p><p>At the current stage, this question and answer system supports 15 different types of questions, including: disease symptoms, known symptoms to find possible diseases, causes, complications, foods not to eat, foods to eat, what medicines to take, what checks to be done, preventive measures, Treatment methods and cycles, etc.</p><p>At present, we are trying to add deep learning and natural language processing related content, so as to get rid of the use of keyword matching, because keyword matching has some shortcomings: 1. The types of questions are limited (the user may use a strange questioning method, so Avoid the keywords that we have set in advance: for example, the question of what to eat); 2. The answer is relatively rigid (about the cause of the disease, prevention, etc., the actual return is a large paragraph of text, in fact, the concept of event extraction can be introduced here , And further structure the reasons). So we are currently trying to use NLP to directly identify the entities, relationships, and attributes in the user input questions, and then use the knowledge graph ontology layer to match the results.</p><p>In addition, we are also trying to add voice functions, using some public voice recognition interfaces (free interfaces provided by HKUST IFLYTEK or Baidu AI or Tencent Cloud for developers) to achieve speech recognition and synthesis.</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/QA_KG/1.png&quot; alt=&quot;1&quot;&gt;&lt;/p&gt;
@@ -105,24 +140,26 @@
     
     
     
-    <category term="Knowledge Graph" scheme="http://blog.andy.fit/tags/Knowledge-Graph/"/>
+    <category term="Natural Language Processing" scheme="http://blog.shiboxu.top/tags/Natural-Language-Processing/"/>
     
-    <category term="Neo4j" scheme="http://blog.andy.fit/tags/Neo4j/"/>
+    <category term="Deep Learning" scheme="http://blog.shiboxu.top/tags/Deep-Learning/"/>
     
-    <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
+    <category term="Machine Learning" scheme="http://blog.shiboxu.top/tags/Machine-Learning/"/>
     
-    <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
+    <category term="Algorithm" scheme="http://blog.shiboxu.top/tags/Algorithm/"/>
     
-    <category term="Deep Learning" scheme="http://blog.andy.fit/tags/Deep-Learning/"/>
+    <category term="Python" scheme="http://blog.shiboxu.top/tags/Python/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    <category term="Knowledge Graph" scheme="http://blog.shiboxu.top/tags/Knowledge-Graph/"/>
+    
+    <category term="Neo4j" scheme="http://blog.shiboxu.top/tags/Neo4j/"/>
     
   </entry>
   
   <entry>
     <title>「TBM」Intelligent Perception System</title>
-    <link href="http://blog.andy.fit/2020/11/30/TBM/"/>
-    <id>http://blog.andy.fit/2020/11/30/TBM/</id>
+    <link href="http://blog.shiboxu.top/2020/11/30/TBM/"/>
+    <id>http://blog.shiboxu.top/2020/11/30/TBM/</id>
     <published>2020-11-30T13:48:47.000Z</published>
     <updated>2021-11-19T05:10:11.515Z</updated>
     
@@ -135,24 +172,24 @@
     
     
     
-    <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
+    <category term="Machine Learning" scheme="http://blog.shiboxu.top/tags/Machine-Learning/"/>
     
-    <category term="Machine Learning" scheme="http://blog.andy.fit/tags/Machine-Learning/"/>
+    <category term="Algorithm" scheme="http://blog.shiboxu.top/tags/Algorithm/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    <category term="Python" scheme="http://blog.shiboxu.top/tags/Python/"/>
     
-    <category term="PSO" scheme="http://blog.andy.fit/tags/PSO/"/>
+    <category term="PSO" scheme="http://blog.shiboxu.top/tags/PSO/"/>
     
-    <category term="SHAP" scheme="http://blog.andy.fit/tags/SHAP/"/>
+    <category term="SHAP" scheme="http://blog.shiboxu.top/tags/SHAP/"/>
     
-    <category term="PyQt" scheme="http://blog.andy.fit/tags/PyQt/"/>
+    <category term="PyQt" scheme="http://blog.shiboxu.top/tags/PyQt/"/>
     
   </entry>
   
   <entry>
     <title>「PSO」Algorithm Improvement</title>
-    <link href="http://blog.andy.fit/2020/11/15/PSO/"/>
-    <id>http://blog.andy.fit/2020/11/15/PSO/</id>
+    <link href="http://blog.shiboxu.top/2020/11/15/PSO/"/>
+    <id>http://blog.shiboxu.top/2020/11/15/PSO/</id>
     <published>2020-11-15T03:08:51.000Z</published>
     <updated>2021-11-19T05:10:02.828Z</updated>
     
@@ -168,18 +205,18 @@
     
     
     
-    <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="http://blog.shiboxu.top/tags/Algorithm/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    <category term="Python" scheme="http://blog.shiboxu.top/tags/Python/"/>
     
-    <category term="Swarm intelligence" scheme="http://blog.andy.fit/tags/Swarm-intelligence/"/>
+    <category term="Swarm intelligence" scheme="http://blog.shiboxu.top/tags/Swarm-intelligence/"/>
     
   </entry>
   
   <entry>
     <title>「NeuWeb」A Portfolio Web Application</title>
-    <link href="http://blog.andy.fit/2020/10/09/NeuWeb/"/>
-    <id>http://blog.andy.fit/2020/10/09/NeuWeb/</id>
+    <link href="http://blog.shiboxu.top/2020/10/09/NeuWeb/"/>
+    <id>http://blog.shiboxu.top/2020/10/09/NeuWeb/</id>
     <published>2020-10-09T00:08:11.000Z</published>
     <updated>2021-11-18T11:02:55.697Z</updated>
     
@@ -193,24 +230,24 @@
     
     
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    <category term="Maven" scheme="http://blog.shiboxu.top/tags/Maven/"/>
     
-    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="http://blog.shiboxu.top/tags/JavaScript/"/>
     
-    <category term="JSF" scheme="http://blog.andy.fit/tags/JSF/"/>
+    <category term="JSF" scheme="http://blog.shiboxu.top/tags/JSF/"/>
     
-    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
+    <category term="HTML" scheme="http://blog.shiboxu.top/tags/HTML/"/>
     
-    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
+    <category term="CSS" scheme="http://blog.shiboxu.top/tags/CSS/"/>
     
-    <category term="Apache Derby" scheme="http://blog.andy.fit/tags/Apache-Derby/"/>
+    <category term="Apache Derby" scheme="http://blog.shiboxu.top/tags/Apache-Derby/"/>
     
   </entry>
   
   <entry>
     <title>「RRT」Three types of Rapid-exploration Random Tree</title>
-    <link href="http://blog.andy.fit/2020/09/19/RRT/"/>
-    <id>http://blog.andy.fit/2020/09/19/RRT/</id>
+    <link href="http://blog.shiboxu.top/2020/09/19/RRT/"/>
+    <id>http://blog.shiboxu.top/2020/09/19/RRT/</id>
     <published>2020-09-19T04:16:17.000Z</published>
     <updated>2021-11-17T14:07:27.555Z</updated>
     
@@ -237,16 +274,16 @@
     
     
     
-    <category term="Algorithm" scheme="http://blog.andy.fit/tags/Algorithm/"/>
+    <category term="Algorithm" scheme="http://blog.shiboxu.top/tags/Algorithm/"/>
     
-    <category term="Python" scheme="http://blog.andy.fit/tags/Python/"/>
+    <category term="Python" scheme="http://blog.shiboxu.top/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>「HIS」Neusoft Cloud Medical System</title>
-    <link href="http://blog.andy.fit/2020/07/17/HIS/"/>
-    <id>http://blog.andy.fit/2020/07/17/HIS/</id>
+    <link href="http://blog.shiboxu.top/2020/07/17/HIS/"/>
+    <id>http://blog.shiboxu.top/2020/07/17/HIS/</id>
     <published>2020-07-17T10:16:06.000Z</published>
     <updated>2021-11-18T11:01:53.598Z</updated>
     
@@ -262,23 +299,23 @@
     
     
     
-    <category term="Java" scheme="http://blog.andy.fit/tags/Java/"/>
+    <category term="Java" scheme="http://blog.shiboxu.top/tags/Java/"/>
     
-    <category term="Spring Boot" scheme="http://blog.andy.fit/tags/Spring-Boot/"/>
+    <category term="Spring Boot" scheme="http://blog.shiboxu.top/tags/Spring-Boot/"/>
     
-    <category term="MyBatis" scheme="http://blog.andy.fit/tags/MyBatis/"/>
+    <category term="MyBatis" scheme="http://blog.shiboxu.top/tags/MyBatis/"/>
     
-    <category term="MySQL" scheme="http://blog.andy.fit/tags/MySQL/"/>
+    <category term="MySQL" scheme="http://blog.shiboxu.top/tags/MySQL/"/>
     
-    <category term="Maven" scheme="http://blog.andy.fit/tags/Maven/"/>
+    <category term="Maven" scheme="http://blog.shiboxu.top/tags/Maven/"/>
     
-    <category term="JavaScript" scheme="http://blog.andy.fit/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="http://blog.shiboxu.top/tags/JavaScript/"/>
     
-    <category term="HTML" scheme="http://blog.andy.fit/tags/HTML/"/>
+    <category term="HTML" scheme="http://blog.shiboxu.top/tags/HTML/"/>
     
-    <category term="CSS" scheme="http://blog.andy.fit/tags/CSS/"/>
+    <category term="CSS" scheme="http://blog.shiboxu.top/tags/CSS/"/>
     
-    <category term="Bootstrap" scheme="http://blog.andy.fit/tags/Bootstrap/"/>
+    <category term="Bootstrap" scheme="http://blog.shiboxu.top/tags/Bootstrap/"/>
     
   </entry>
   

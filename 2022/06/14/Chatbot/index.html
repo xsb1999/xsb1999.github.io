@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.shiboxu.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IntroductionAt present, chatbots have two main drawbacks. One is the lack of distinct personality, that is, different chatbots give basically the same response to a user’s same input sentence, which">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「EmotionalChatbot」 Chatbot With Emotional Context">
+<meta property="og:url" content="http://blog.shiboxu.top/2022/06/14/Chatbot/index.html">
+<meta property="og:site_name" content="Andy Xu&#39;s Blog">
+<meta property="og:description" content="IntroductionAt present, chatbots have two main drawbacks. One is the lack of distinct personality, that is, different chatbots give basically the same response to a user’s same input sentence, which">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/1.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/3.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/4.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/5.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/6.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/7.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/8.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/9.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/16.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/17.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/18.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/10.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/11.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/12.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/13.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/19.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/20.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/21.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/14.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/15.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/22.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/23.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/24.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/25.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/26.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/27.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/28.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/29.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/30.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/31.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/32.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/1.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/2.png">
+<meta property="og:image" content="http://blog.shiboxu.top/images/Chatbot/33.png">
+<meta property="article:published_time" content="2022-06-14T02:14:57.000Z">
+<meta property="article:modified_time" content="2022-06-19T17:35:05.442Z">
+<meta property="article:author" content="Andy Xu">
+<meta property="article:tag" content="Natural Language Processing">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Flask">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="TensorFlow">
+<meta property="article:tag" content="Keras">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.shiboxu.top/images/Chatbot/1.png">
+
+<link rel="canonical" href="http://blog.shiboxu.top/2022/06/14/Chatbot/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>「EmotionalChatbot」 Chatbot With Emotional Context | Andy Xu's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+<link rel="alternate" href="/atom.xml" title="Andy Xu's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Andy Xu's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-personal-resume">
+
+    <a href="https://xsb1999.gitee.io/xsb1999.gitee.io" rel="noopener" target="_blank"><i class="fa fa-user fa-fw"></i>Personal Resume</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">9</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.shiboxu.top/2022/06/14/Chatbot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Andy Xu">
+      <meta itemprop="description" content="Light tomorrow with today">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Andy Xu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「EmotionalChatbot」 Chatbot With Emotional Context
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-14 10:14:57" itemprop="dateCreated datePublished" datetime="2022-06-14T10:14:57+08:00">2022-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-20 01:35:05" itemprop="dateModified" datetime="2022-06-20T01:35:05+08:00">2022-06-20</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/images/Chatbot/1.png" alt="1"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>At present, chatbots have two main drawbacks. One is the lack of distinct personality, that is, different chatbots give basically the same response to a user’s same input sentence, which lacks the uniqueness of each chatbot. The other drawback is the poor emotional retention ability of chatbots, that is, they do not take into account the emotional context, which makes the chatbot’s mood change dramatically in an instant during the conversation, lacking realism. Therefore, it is of great significance to research, design and implement chatbots with multi-personality, good ability of maintaining emotions and possessing emotional context.</p>
+<p>In this project, I designed and implemented 5 chatbots with different personalities (<em>Angry, Sad, Happy, Neutral, Frustrated</em>) and strong emotional retention ability. I also effectively improved the ability of these chatbots to maintain emotions, reducing the probability of chatbots’ mood changes, making their conversations with people more realistic and vivid.</p>
+<span id="more"></span>
+
+
+
+<h2 id="A-Small-Demo"><a href="#A-Small-Demo" class="headerlink" title="A Small Demo"></a>A Small Demo</h2><h3 id="1-Choose-a-chatbot"><a href="#1-Choose-a-chatbot" class="headerlink" title="1. Choose a chatbot"></a>1. Choose a chatbot</h3><p>Let’s choose <strong>Susan</strong>, whose personality is <em><strong>Sad</strong></em>.</p>
+<p><img src="/images/Chatbot/3.png" alt="1"></p>
+<h3 id="2-Chat-with-it"><a href="#2-Chat-with-it" class="headerlink" title="2. Chat with it"></a>2. Chat with it</h3><p>First, I say <code>&quot;i am so happy&quot;</code>, my emotion is happy, but Susan responds with sadness, with the sentence <code>&quot;i am not&quot;</code>. The reason why the chatbot’s emotion is sad is that Susan’s personality is sad, so that she has the ability to maintain it’s personality, the same as other chatbots.</p>
+<p><img src="/images/Chatbot/4.png" alt="1"></p>
+<p>Then, I say <code>&quot;i am excited&quot;</code>, my emotion is still happy. This time, Susan responds with happiness, with the sentence <code>&quot;yeah yeah yeah yeah&quot;</code>. This is like talking with a real person. When I keep saying happy words to a person, I will change its mood. The accumulation of emotions causes changes. When I repeatedly said happy words to the chatbot, happy emotions built up, causing the chatbot’s mood to change from sad to happy.</p>
+<p><img src="/images/Chatbot/5.png" alt="1"></p>
+<p>After that, I say <code>&quot;it&#39;s good&quot;</code> and <code>&quot;it&#39;s wonderful&quot;</code>, which are both happy sentences. The chatbot’s emotion keeps to be happy with no changes.</p>
+<p><img src="/images/Chatbot/6.png" alt="1"></p>
+<p><img src="/images/Chatbot/7.png" alt="1"></p>
+<p>Then, I say <code>&quot;i feel worse&quot;</code> which is a sad sentence, and my mood is sad. The chatbot’s mood remains happy, instead of turning into sadness. This is because the chatbot has such a large accumulation of happy emotions that only one sad sentence is not enough to turn its mood directly into sadness. This is the emotional retention ability of chatbots.</p>
+<p><img src="/images/Chatbot/8.png" alt="1"></p>
+<p>Finally, I say <code>&quot;hello sir&quot;</code>, a sentence with neutral emotion, and the chatbot responds with sadness, with the sentence <code>&quot;i do not want to talk anymore&quot;</code>. That is because I designed a emotional recovery mechanism for chatbots. After a certain number of rounds of conversation, the chatbot’s emotions moved toward its personality. It is worth noting that this movement of emotion does not directly turn emotion into personality, but gradually move closer to personality.</p>
+<p><img src="/images/Chatbot/9.png" alt="1"></p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Chatbots are booming and have entered people’s lives. Chatbots can be used as NPC in games and can also be used for Chit-chat to accompany people.</p>
+<img src="/images/Chatbot/16.png" alt="1" style="zoom:63%;" />
+
+<p><strong>Current chatbots have two drawbacks</strong></p>
+<ul>
+<li>Not having unique personalities<ul>
+<li>All brands of chatbots gave roughly the same response to the same user input.</li>
+</ul>
+</li>
+<li>Poor emotional retention ability<ul>
+<li>Chatbots’ mood can change instantaneously (<em>shown in the figure below</em>).</li>
+</ul>
+</li>
+</ul>
+<img src="/images/Chatbot/17.png" alt="1" style="zoom:75%;" />
+
+<img src="/images/Chatbot/18.png" alt="1" style="zoom:75%;" />
+
+
+
+<h2 id="Overall-Project-Structure"><a href="#Overall-Project-Structure" class="headerlink" title="Overall Project Structure"></a>Overall Project Structure</h2><p>The project contains 3 core functional modules</p>
+<ul>
+<li>Emotion Recognition Module</li>
+<li>Emotion Response Module</li>
+<li>Dialogue Generation Module</li>
+</ul>
+<p><img src="/images/Chatbot/10.png" alt="1"></p>
+<h2 id="Emotion-Recognition-Module"><a href="#Emotion-Recognition-Module" class="headerlink" title="Emotion Recognition Module"></a>Emotion Recognition Module</h2><ul>
+<li><strong>Input</strong>: User input sentence</li>
+<li><strong>Output</strong>: User emotion</li>
+</ul>
+<img src="/images/Chatbot/11.png" alt="1" style="zoom:60%;" />
+
+<br>
+
+<ul>
+<li><strong>Dataset</strong><ul>
+<li><em><strong><a target="_blank" rel="noopener" href="https://sail.usc.edu/iemocap/">IEMOCAP</a></strong></em></li>
+<li>151 dialogues, 7433 sentences</li>
+</ul>
+</li>
+</ul>
+<img src="/images/Chatbot/12.png" alt="1" style="zoom:66%;" />
+
+
+
+<ul>
+<li><strong>Data preprocessing stage</strong><ul>
+<li>Merge data from the Excited class into the Happy class.</li>
+<li>Extract dialogue text and corresponding emotion labels from multiple txt files.</li>
+<li>Save the data to a pkl file.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Vocabulary construction stage</strong><ul>
+<li>Extract all words from the conversation dataset.</li>
+<li>Add four additional words, namely, <code>&lt;SOS&gt;, &lt;EOS&gt;, &lt;UNK&gt;, &lt;PAD&gt;</code>.</li>
+<li>Map each word to a unique numeric id, and saved as word2id and id2word.</li>
+<li>With a total of 3125 words in the final vocabulary.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>Modeling stage</strong></p>
+<ul>
+<li>Use Tensorflow’s Keras framework.</li>
+<li>Use double - layer two-way LSTM (shown in the figure below).</li>
+</ul>
+  <img src="/images/Chatbot/13.png" alt="1" style="zoom:66%;" />
+  
+<ul>
+<li>Model training</li>
+</ul>
+  <img src="/images/Chatbot/19.png" alt="1" style="zoom:66%;" />
+  
+</li>
+<li><p><strong>Model evaluation</strong></p>
+<ul>
+<li>training set</li>
+</ul>
+  <img src="/images/Chatbot/20.png" alt="1" style="zoom:70%;" />
+
+<ul>
+<li>testing set</li>
+</ul>
+  <img src="/images/Chatbot/21.png" alt="1" style="zoom:70%;" /></li>
+</ul>
+<ul>
+<li><strong>Functional test</strong></li>
+</ul>
+<img src="/images/Chatbot/14.png" alt="1" style="zoom:66%;" />
+
+
+
+
+
+<h2 id="Emotion-Response-Module"><a href="#Emotion-Response-Module" class="headerlink" title="Emotion Response Module"></a>Emotion Response Module</h2><ul>
+<li><strong>Input</strong>: User emotion</li>
+<li><strong>Output</strong>: Chatbot response emotion</li>
+</ul>
+<img src="/images/Chatbot/15.png" alt="1" style="zoom:60%;" />
+
+<br>
+
+<ul>
+<li><p><strong>Emotional models of chatbots</strong></p>
+<ul>
+<li>An emotion vector E is defined to represent the emotion of chatbot.</li>
+<li>e1, e2, e3, e4 and e5 correspond to angry, sad, happy, neutral and frustrated respectively.</li>
+</ul>
+  <img src="/images/Chatbot/22.png" alt="1" style="zoom:60%;" />
+
+<ul>
+<li>An emotional sensitivity vector ES was defined to represent five chatbots with different personalities.</li>
+<li>S1, S2, S3, S4, and S5 correspond to angry, sad, happy, neutral, and frustrated respectively.</li>
+</ul>
+  <img src="/images/Chatbot/23.png" alt="1" style="zoom:60%;" />
+
+<ul>
+<li>Mapping between charters and emotional sensitivity vectors of chatbot.</li>
+</ul>
+  <img src="/images/Chatbot/24.png" alt="1" style="zoom:57%;" />
+
+  <br></li>
+<li><p><strong>Emotional response algorithm for chatbot</strong></p>
+<ul>
+<li><strong>Accumulation of emotion</strong><ul>
+<li>During a chat, the chatbot accumulates emotions and “remembers” historical conversations.</li>
+</ul>
+</li>
+<li><strong>Emotional recovery</strong><ul>
+<li>After every 5 rounds of conversation, the chatbot’s emotion returned in the direction of its personality.</li>
+</ul>
+</li>
+<li><strong>Flow chat of the algorithm</strong></li>
+</ul>
+  <img src="/images/Chatbot/25.png" alt="1" style="zoom:66%;" /></li>
+</ul>
+<h2 id="Dialogue-Generation-Module"><a href="#Dialogue-Generation-Module" class="headerlink" title="Dialogue Generation Module"></a>Dialogue Generation Module</h2><ul>
+<li><strong>Input</strong>: Chatbot response emotion &amp; User input sentence</li>
+<li><strong>Output</strong>: Chatbot response sentence</li>
+</ul>
+<img src="/images/Chatbot/26.png" alt="1" style="zoom:58%;" />
+
+<br>
+
+<ul>
+<li><p><strong>Modeling stage</strong></p>
+<ul>
+<li>Use Tensorflow’s Keras framework.</li>
+<li>Use Seq2Seq model.</li>
+<li>Use 3-layer LSTM for the encoder (shown in the figure below).</li>
+</ul>
+  <img src="/images/Chatbot/27.png" alt="1" style="zoom:70%;" />
+
+<ul>
+<li><p>Use 3-layer LSTM for the decoder (shown in the figure below).</p>
+<ul>
+<li><strong>Add Emotional attention mechanism</strong></li>
+<li><em><strong>Concatenate the original input vector of the decoder with the emotion vector as the final input of the decoder.</strong></em></li>
+</ul>
+  <img src="/images/Chatbot/28.png" alt="1" style="zoom:70%;" /></li>
+<li><p>Model training</p>
+</li>
+</ul>
+  <img src="/images/Chatbot/29.png" alt="1" style="zoom:66%;" /></li>
+<li><p><strong>Functional test</strong></p>
+  <img src="/images/Chatbot/30.png" alt="1" style="zoom:63%;" /></li>
+</ul>
+<h2 id="Web-Application-Development"><a href="#Web-Application-Development" class="headerlink" title="Web Application Development"></a>Web Application Development</h2><p>The system was written in Python, the Flask framework was used for service deployment, the pre-trained Tensorflow-Keras model files were used as core function modules, and the front-end used HTML, JavaScript, CSS technology.</p>
+<p>The sequence diagram of chat function is shown in the figure below.</p>
+<img src="/images/Chatbot/31.png" alt="1" style="zoom:68%;" />
+
+<p>The chat function flow chart of the system is shown in the figure below.</p>
+<img src="/images/Chatbot/32.png" alt="1" style="zoom:40%;" />
+
+
+
+<ul>
+<li><p><strong>Page display</strong></p>
+<ul>
+<li>Chatbot selection page</li>
+</ul>
+<p>  <img src="/images/Chatbot/1.png" alt="1"></p>
+<ul>
+<li>Chat page</li>
+</ul>
+<p>  <img src="/images/Chatbot/2.png" alt="1"></p>
+<ul>
+<li>The chatbot generates response content</li>
+</ul>
+<p>  <img src="/images/Chatbot/33.png" alt="1"></p>
+</li>
+</ul>
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a target="_blank" rel="noopener" href="https://github.com/xsb1999/Chatbots-With-Emotional-Context">GitHub</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Natural-Language-Processing/" rel="tag"><i class="fa fa-tag"></i> Natural Language Processing</a>
+              <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+              <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i> Machine Learning</a>
+              <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
+              <a href="/tags/Flask/" rel="tag"><i class="fa fa-tag"></i> Flask</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/TensorFlow/" rel="tag"><i class="fa fa-tag"></i> TensorFlow</a>
+              <a href="/tags/Keras/" rel="tag"><i class="fa fa-tag"></i> Keras</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/28/Vortex/" rel="prev" title="「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate">
+      <i class="fa fa-chevron-left"></i> 「Vortex」Deep Learning Based Reconnection Detection During the Evolution of Quantum Vortices in Bose-Einstein Condensate
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Small-Demo"><span class="nav-number">2.</span> <span class="nav-text">A Small Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Choose-a-chatbot"><span class="nav-number">2.1.</span> <span class="nav-text">1. Choose a chatbot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Chat-with-it"><span class="nav-number">2.2.</span> <span class="nav-text">2. Chat with it</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">3.</span> <span class="nav-text">Background</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overall-Project-Structure"><span class="nav-number">4.</span> <span class="nav-text">Overall Project Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emotion-Recognition-Module"><span class="nav-number">5.</span> <span class="nav-text">Emotion Recognition Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emotion-Response-Module"><span class="nav-number">6.</span> <span class="nav-text">Emotion Response Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dialogue-Generation-Module"><span class="nav-number">7.</span> <span class="nav-text">Dialogue Generation Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Application-Development"><span class="nav-number">8.</span> <span class="nav-text">Web Application Development</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Link"><span class="nav-number">9.</span> <span class="nav-text">Link</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Andy Xu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Andy Xu</p>
+  <div class="site-description" itemprop="description">Light tomorrow with today</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xsb1999" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xsb1999" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/shibo_xu_99@163.com" title="E-Mail → shibo_xu_99@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/shibo-xu-a7a269194" title="Linkedin → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;shibo-xu-a7a269194" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>Linkedin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="wechat:Xu Shibo" title="WeChat → wechat:Xu Shibo" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>WeChat</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-child fa-fw"></i>
+      Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://taylorchyi.xyz/" title="https:&#x2F;&#x2F;taylorchyi.xyz&#x2F;" rel="noopener" target="_blank">Taylor Chyi</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+<br><br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=4278298&auto=0&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Andy Xu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">61k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">55 mins.</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+  
+  <script id="ribbon" src="/js/src/canvas-ribbon.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
